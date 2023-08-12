@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+<main id="index">
+    <div>
+        <h2><u>All Items</u></h2>
+        <div id="all_items">
+            <% if (all_items) { %>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Date (YYYY-MM-DD)</th>
+                        <th>Time (24hr)</th>
+                        <th class="last_col">Remove</th>
+                    </tr>
+                <% all_items.forEach((element) => { %>
+                    <tr>
+                        <td><%= element['item'] %></td>
+                        <td><%= element['date'] %></td>
+                        <td><%= element['time'] %></td>
+                        <td class="last_col" id="remove">
+                            <form action="/remove" method="post">
+                                <input type="hidden" name="item" value="<%= element['item'] %>">
+                                <input type="hidden" name="date" value="<%= element['date'] %>">
+                                <input type="hidden" name="time" value="<%= element['time'] %>">
+                                <button class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+                </table>
+            <% } %>
+        </div>
+        <hr>
+        <h2><u>Add Item</u></h2>
+        <form action="/new" method="post">
+            <input class="form control" type="text" placeholder="Item" name="item" required>
+            <input class="form control" type="date" name="date" min=<%= new Date().toISOString().split('T')[0] %> required>
+            <input class="form control" type="time" name="time" required>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</main>
+
+<%- include("partials/footer.ejs") %>
