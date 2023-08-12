@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+<main id="register">
+    <form action="/register" method="post">
+        <h1>Register</h1>
+        <%- message %>
+        <label>Email:</label>
+        <input class="form-control" type="email" placeholder="Enter Email" name="username" required autofocus>
+        <label>Password:</label>
+        <input class="form-control" type="password" placeholder="Enter Password" name="password" required>
+        <label>Confirm Password:</label>
+        <input class="form-control" type="password" placeholder="Re-enter Password" name="confirm" required>
+        <button class="btn">Register</button><br>
+        <button type="button" class="btn google_btn">Sign Up with Google</button>
+        <button type="button" class="btn fb_btn">Sign Up with Facebook</button>
+        <p>Click <a href="/login">here</a> to login.</p>
+    </form>
+</main>
+
+<%- include("partials/footer.ejs") %>
