@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block body %}
+<div div="container d-flex justify-content-center align-items-center" id="main_img_div">
+    <img src="/static/images/books.jpg">
+    <div class="d-flex justify-content-center align-items-center" id="main_img_words">
+        <ul style="list-style: none;">
+            <li><h1>Emrah's Blog</h1></li>
+            <li><p>Where I post interesting discoveries from life.</p></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col-lg-9 col-md-12">
+            <div class="main_posts container mt-4">
+                <h1><b>Most Recent Posts</b></h1>
+                <hr>
+                {% for post in posts %}
+                <div class="row d-flex justify-content-center">
+                    <div class="main_posts_text col-xl-12 mt-3" onclick="window.location.pathname = '/post/' + {{ post.id }} ">
+                        <h3 class="main-post-title"><b>{{ post.title }}</b></h3>
+                        <p class="main-post-subtitle">{{ post.subtitle }}</p>
+                        <p class="main-post-info text-muted">Posted by <i>{{ post.author }}</i> on <i>{{ post.date }}</i></p>
+                        <hr>
+                    </div>
+                </div>
+                {% endfor %}
+                {% if current_user.is_authenticated %}
+                {% if current_user.id == 1 %}
+                <button type="button" id="new_post_button" class="btn btn-primary mb-5 me-2" onclick="window.location.pathname = '/new'">New Post</button>
+                {% endif %}
+                {% endif %}
+                <button type="button" id="new_post_button" class="btn btn-primary mb-5" onclick="window.location.pathname = '/all'">All Posts</button>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="main_posts container mt-4">
+                <div class="row d-flex justify-content-start">
+                    <div class="col-xl-12">
+                        <h2><b>All Categories:</b></h2>
+                        <ul style="list-style: none; padding: 0;line-height: 1.75em;">
+                            {% for category in categories %}
+                            <li><a href="/category/{{ category }}">{{ category }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

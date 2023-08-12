@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center mt-4" style="margin-bottom: 25%;"e>
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 col-12 justify-content-center" style="text-align: left; font-size: 1rem;">
+        <div id="profile_info">
+            <form action="/profile" method="post" id="edit_profile_form">
+                <h2 class="mb-3"><b>Profile Information:</b></h2>
+                {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                {{ message|safe }}
+                {% endfor %}
+                {% endwith %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <label for="f_name">First Name:</label>
+                <input class="form-control" type="text" required value="{{ user.f_name }}" placeholder="Enter First Name" name="f_name" disabled><br>
+                <label for="l_name">Last Name:</label>
+                <input class="form-control" type="text" required value="{{ user.l_name }}" placeholder="Enter Last Name" name="l_name" disabled><br>
+                <label for="email">Email:</label>
+                <input class="form-control" type="email" required value="{{ user.email }}" placeholder="Enter Email" name="email" disabled><br>
+                <label for="username">Username:</label>
+                <input class="form-control" type="text" required value="{{ user.username }}" placeholder="Enter Username" name="username" disabled><br>
+                <div id="edit_buttons" style="display:none;">
+                    <button type="submit" class="btn btn-primary me-2" id="confirm_edit_button">Confirm</button>
+                    <button type="button" class="btn btn-primary" id="cancel_edit_button" onclick="if(confirm('Are you sure you would like to cancel?')) {location.reload()}">Cancel</button>
+                </div>
+                <button type="button" class="btn btn-primary me-2" id="edit_profile_button">Edit</button>
+                <button type="button" class="btn btn-primary" id="change_pw_button">Change Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

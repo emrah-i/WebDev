@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+New Post
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center">
+    <div class="row w-100 d-flex justify-content-center">
+        <div class="col-xl-9 col-lg-10 col-md-11 col-12">
+            <form action="/new" method="post">
+                <h2 class="my-4"><b>New Blog Post:</b></h2>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <label for="title">Title:</label>
+                <input class="form-control" type="text" name="title" maxlength="80" placeholder="Enter Title" required><br>
+                <label for="subtitle">Subtitle:</label>
+                <input class="form-control" type="text" name="subtitle" maxlength="80" placeholder="Enter Subtitle" required><br>
+                <label for="author">Author: </label>
+                <input class="form-control" type="text" name="author" maxlength="100" placeholder="Enter Author" required><br>
+                <label for="img">Image Source: </label>
+                <input class="form-control" type="text" name="img" placeholder="Enter Image Source" required><br>
+                <label for="categories">Select Category: </label>
+                <select class="form-control" name="category" required>
+                    <option selected disabled>Select from list</option>
+                    {% for category in categories %}
+                    <option>{{ category }}</option>
+                    {% endfor %}
+                </select><br>
+                <label for="body">Body: </label>
+                <textarea name="body" id="editor" required></textarea><br>
+                <button type="submit" id="new_post_button" class="btn btn-primary mb-5">Post</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
