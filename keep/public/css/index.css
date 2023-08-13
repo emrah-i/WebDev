@@ -1,15 +1,72 @@
-html {
-    padding: 0;
-    margin: 0;
+body {
+    background-color: #c0c0c010;
+    font-family: 'McLaren', cursive;
 }
 
 .heading {
     background-color: #E74C3C;
-    width: 100vw;
     color: white;
-    font-family: 'McLaren', cursive;
     padding: 1rem;
-    margin: 0;
     font-size: 2rem;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 255, .2);
+    box-shadow: 0px 0px 5px .3rem rgba(0, 0, 0, .3);
+}
+
+.container {
+    width: 100%;
+    margin: 0 !important;
+}
+
+.container-all {
+    margin: 2rem;
+}
+
+.all-notes {
+    margin: 2rem 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.items-col {
+    background-color: white;
+    box-shadow: 0px 0px 5px .1rem rgba(0, 0, 0, .3);
+    border-radius: .5rem;
+    min-height: 5rem;
+    min-width: 18rem;
+    padding: 1rem;
+    font-weight: 200;
+    transition: all .15s ease-in-out;
+    flex-grow: 1;
+}
+
+.items-col:hover {
+    transform: scale(1.05);
+}
+
+.items-col .title {
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.btn-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.add-btn {
+    background-color: #E74C3C;
+    color: white;
+}
+
+form {
+    display: none;
+    flex-direction: column;
+    align-items: start;
+}
+
+form .btn {
+    align-self: center;
 }
