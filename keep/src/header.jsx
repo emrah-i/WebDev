@@ -1,4 +1,7 @@
+import React from 'react';
 
-function header(){
-    
+function Header(){
+    return  <p className="heading">Keeper</p>
 }
+
+export default Header;
