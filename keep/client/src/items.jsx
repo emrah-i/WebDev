@@ -1,9 +1,18 @@
 import React from 'react';
 
 function map_all(item) {
-    return ((<div key={item.id} className="col items-col">
+
+    async function deleteNote(id) {
+        const repsonse = await fetch("/delete/" + id, { 
+            method: "DELETE"
+        })
+        window.location.reload()
+    }
+
+    return ((<div key={item._id} className="col items-col">
                 <p className='title'>{item.title}</p>
                 <p>{item.note}</p>
+                <p><a className='text-muted' onClick={()=> {deleteNote(item.id)}}>delete</a></p>
             </div>))
 }
 

@@ -1,18 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function form(props) {
+function form() {
 
-    function submit(event){
-        event.preventDefault()
-        const title = event.target.title.value
-        const note = event.target.note.value
-        const item = {title: title, 
-                    note: note}
-        console.log(item)
-        props.addItemToList(item)
-    }
-
-    return (<form className="add-form" onSubmit={submit}>
+    return (<form className="add-form" action="/add-note" method="post">
                 <label>Title:</label>
                 <input type='text' name='title' className="form-control" placeholder="Enter Title" maxLength="140" required /><br />
                 <label>Note:</label>
