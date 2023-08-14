@@ -22,8 +22,7 @@ body {
 
 .all-notes {
     margin: 2rem 0;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
     gap: 1rem;
 }
 

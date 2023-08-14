@@ -1,34 +1,39 @@
 import React, { useState } from 'react';
 import Header from './header';
-import Items from './item';
+import Items from './items';
 import Button from './button';
 import Form from './form';
 
-const MainComponent = () => {
+function  MainComponent() {
     const [all, setAll] = useState([
         {
+            id: 1,
             title: "Item 1",
             note: "Note for Item 1.",
         },
         {
+            id: 2,
             title: "Item 2",
             note: "Note for Item 2.",
         },
         {
+            id: 3,
             title: "Item 3",
             note: "Note for Item 3.",
         },
         {
+            id: 4,
             title: "Item 4",
             note: "Note for Item 4.",
         },
         {
+            id: 5,
             title: "Item 5",
             note: "Note for Item 5.",
         }
         ]);
         
-        const addItemToList = newItem => {
+    function addItemToList(newItem) {
         setAll(prevItems => [...prevItems, newItem]);
         };
 
@@ -40,12 +45,11 @@ const MainComponent = () => {
                 <Form addItemToList={addItemToList} />
             </div>
             <div className='container-all'>
-                <div className='all-notes row row-cols-6'>
-                    <Items all_items={all} />
-                </div>
+                <Items all_items={all} />
             </div>
         </div>
     );
 };
 
 export default MainComponent;
+
