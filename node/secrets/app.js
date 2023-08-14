@@ -193,10 +193,6 @@ app.route('/secrets')
     res.redirect('/secrets')
   })
 
-app.get('/load', (req, res)=>{
-
-});
-
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);
 })
