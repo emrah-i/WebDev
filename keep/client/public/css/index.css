@@ -34,13 +34,8 @@ body {
     min-width: 18rem;
     padding: 1rem;
     font-weight: 200;
-    transition: all .15s ease-in-out;
     flex-grow: 1;
     max-width: 19rem;
-}
-
-.items-col:hover {
-    transform: scale(1.05);
 }
 
 .items-col .title {
@@ -61,7 +56,12 @@ body {
 
 .add-btn {
     background-color: #E74C3C;
+    border: 2px solid #E74C3C !important;
     color: white;
+}
+
+.add-btn:hover {
+    color:#E74C3C
 }
 
 form {
@@ -78,22 +78,37 @@ form {
 
 form input {
     border: none !important;
-    font-size: 1.15rem !important;
+    font-size: 1.1rem !important;
 }
 
 form .btn {
-    align-self: center;
+    align-self: end;
+    padding: .25rem .5rem .4rem;
+    border-radius: 6rem;
+    border: 2px solid #E74C3C !important;
+}
+
+form .btn:hover {
+    background-color: white;
+    color: #E74C3C;
 }
 
 .trash > * {
-    font-size: 2rem !important;
+    font-size: 1.7rem !important;
 }
 
 .trash {
+    float: right;
     border-radius: 2rem;
-    padding: .5rem;
+    padding: .4rem;
     border: none;
     overflow: hidden;
     background: #E74C3C;
+    border: 2px solid #E74C3C;
     color:white !important;
+}
+
+.trash:hover {
+    background-color: white;
+    color: #E74C3C !important;
 }
