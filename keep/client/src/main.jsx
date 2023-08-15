@@ -7,6 +7,7 @@ import Form from './form';
 
 function MainComponent() {
     const [all, setAll] = useState([])
+    const [form_grow, setGrow] = useState(false)
 
     useEffect(()=>{
         async function getAll() {
@@ -21,11 +22,11 @@ function MainComponent() {
         <div>
             <Header />
             <div className='btn-form'>
-                <Button />
-                <Form />
+                <Button setGrow={setGrow} />
+                <Form form_grow={form_grow} />
             </div>
             <div className='container-all'>
-                <Items all_items={all} />
+                <Items all_items={all}/>
             </div>
         </div>
     );

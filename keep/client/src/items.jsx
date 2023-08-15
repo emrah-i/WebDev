@@ -1,5 +1,7 @@
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Grow from '@mui/material/Grow';
+
 
 function map_all(item) {
 
@@ -10,11 +12,11 @@ function map_all(item) {
         window.location.reload()
     }
 
-    return ((<div key={item._id} className="col items-col">
+    return (<Grow in={true} timeout={1000}><div key={item._id} className="col items-col">
                 <p className='title'>{item.title}</p>
                 <p>{item.note}</p>
                 <button className='trash' onClick={deleteNote}><DeleteIcon /></button>
-            </div>))
+            </div></Grow>)
 }
 
 function items(props){
