@@ -7,7 +7,7 @@ function button() {
         document.querySelector('.add-form').style.display = 'flex';
     }
 
-    return (<button className="btn add-btn" onClick={click}>Add Notes</button>)
+    return (<button className="btn add-btn" onClick={click}>Add Note</button>)
 }
 
 export default button;

@@ -1,9 +1,10 @@
 import React from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function map_all(item) {
 
     async function deleteNote(id) {
-        const repsonse = await fetch("/delete/" + id, { 
+        await fetch("/delete/" + id, { 
             method: "DELETE"
         })
         window.location.reload()
@@ -12,7 +13,7 @@ function map_all(item) {
     return ((<div key={item._id} className="col items-col">
                 <p className='title'>{item.title}</p>
                 <p>{item.note}</p>
-                <p><a className='text-muted' onClick={()=> {deleteNote(item.id)}}>delete</a></p>
+                <button className='trash' onClick={deleteNote}><DeleteIcon /></button>
             </div>))
 }
 
