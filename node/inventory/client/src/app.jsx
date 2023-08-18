@@ -1,13 +1,13 @@
 import React from 'react';
 import Form from './form';
+import Items from './items';
 
 function app() {
   return (
-    <main className='row'>
-        <Form />
-        <button className='btn-items'>Submit All</button>
-        <div>
-            <h1>All Items:</h1>
+    <main className='container'>
+        <div className='row row-cols-2'>
+            <Form className="col" />
+            <Items className="col" />
         </div>
     </main>
   )

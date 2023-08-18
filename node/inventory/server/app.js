@@ -18,6 +18,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/inventoryDB", {
 const itemSchema = new mongoose.Schema({
     item: String,
     quantity: Number,
+    barcode: Number
 })
 
 app.get('/', (req, res) => {
