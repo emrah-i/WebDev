@@ -15,12 +15,16 @@ mongoose.connect("mongodb://127.0.0.1:27017/inventoryDB", {
     useUnifiedTopology: true,
   });
 
-const noteSchema = new mongoose.Schema({
-    title: String,
-    note: String
+const itemSchema = new mongoose.Schema({
+    item: String,
+    quantity: Number,
 })
 
-const Note = new mongoose.model('Note', noteSchema);
+app.get('/', (req, res) => {
+    res.render('node/inventory/client/public/index.html')
+})
+
+const Item = new mongoose.model('Item', itemSchema);
 
 
 
