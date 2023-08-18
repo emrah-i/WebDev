@@ -4,11 +4,10 @@ import Display from './display';
 function Form() {
 
     const [item, setItem] = useState({})
+    const search_form = document.querySelector('#search-form')
+    const send_form = document.querySelector('#send-form')
 
     async function searchClick(event) {
-
-        const search_form = document.querySelector('#search-form')
-        const send_form = document.querySelector('#send-form')
 
         if (search_form.barcode.value === '') {
             return
@@ -19,6 +18,7 @@ function Form() {
         const s_item = await response.json()
 
         if (s_item != null) {
+            event.target.disabled = false;
             search_form.style.display = 'none';
             setItem(s_item[0]);
             send_form.style.display = 'block';
@@ -34,17 +34,16 @@ function Form() {
 
     function inputChange(event) {
         const name = event.target.name;
-        const form = document.querySelector('#item-form');
 
-        if (name === 'increase' && form.increase.value != '') {
-            form.decrease.disabled = true;
+        if (name === 'increase' && send_form.increase.value != '') {
+            send_form.decrease.disabled = true;
         }
-        else if (name === 'decrease' && form.decrease.value != '') {
-            form.increase.disabled = true;
+        else if (name === 'decrease' && send_form.decrease.value != '') {
+            send_form.increase.disabled = true;
         }
         else {
-            form.increase.disabled = false;
-            form.decrease.disabled = false;
+            send_form.increase.disabled = false;
+            send_form.decrease.disabled = false;
         };
     }
 
@@ -63,7 +62,7 @@ function Form() {
                     <input onChange={inputChange} placeholder="Enter Quantity" type="number" step="1" name="increase" />
                     <label>Remove Items:&nbsp;</label>
                     <input onChange={inputChange} placeholder="Enter Quantity" type="number" step="1" name="decrease" />
-                    <button onClick={sendClick} type='button' className="btn-items" disabled={true}>Add to List</button>
+                    <button onClick={sendClick} type='button' className="btn-items" >Add to List</button>
                 </form>
           </div>
           )}
