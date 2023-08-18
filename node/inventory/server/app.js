@@ -16,19 +16,25 @@ mongoose.connect("mongodb://127.0.0.1:27017/inventoryDB", {
   });
 
 const itemSchema = new mongoose.Schema({
-    item: String,
+    name: String,
+    image: String,
     quantity: Number,
-    barcode: Number
-})
-
-app.get('/', (req, res) => {
-    res.render('node/inventory/client/public/index.html')
+    barcode: String
 })
 
 const Item = new mongoose.model('Item', itemSchema);
 
+app.get('/search/:barcode', async (req, res) => {
+    const entered_barcode = req.params.barcode;
 
-
+    try {
+        const item = await Item.find({barcode: entered_barcode})
+        res.send(item)
+    }
+    catch {
+        res.status(404)
+    }
+})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);

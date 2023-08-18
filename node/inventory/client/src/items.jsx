@@ -1,6 +1,6 @@
 import React from "react";
 
-function items() {
+function Items() {
     return (
         <div>
             <h1>All Items:</h1>
@@ -11,4 +11,4 @@ function items() {
         </div>
           )}
 
-export default items;
+export default Items;

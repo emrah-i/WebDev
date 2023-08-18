@@ -1,9 +1,18 @@
 body {
     font-family: 'Ubuntu', sans-serif;
     background-color:#273746;
+    color: #273746 !important;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
     background-blend-mode: overlay;
     font-size: 1.5rem;
+}
+
+nav {
+    background-color: #D0D3D4;
+}
+
+nav a {
+    color: #273746 !important;
 }
 
 main {
@@ -14,7 +23,7 @@ main {
     background-color: #D0D3D4;
 }
 
-form > * {
+#item-form > * > * {
     display: block;
     padding: .5rem;
 }
@@ -31,7 +40,7 @@ form > * {
     border: none;
     border-radius: 1rem;
     padding: .5rem 1rem;
-    margin: .5rem .5rem 0 0;
+    margin: .5rem .5rem .5rem 0;
 }
 
 .btn-items:disabled {
@@ -39,10 +48,13 @@ form > * {
 }
 
 input {
-    min-width: 50%;
-    width: fit-content;
+    width: 50%;
     border-radius: 1rem;
     margin: .5rem 0;
     padding: .5rem;
     border: 2px solid #707B7C80;
+}
+
+#send-form {
+    display: none;
 }
