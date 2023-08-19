@@ -2,8 +2,17 @@ import React from "react";
 
 function Search(props) {
 
+    document.addEventListener('keydown', (event)=>{
+        const search_form = document.querySelector('#search-form')
+
+        if (event.key === ' ') {
+            search_form.barcode.focus()
+        }
+    })
+
     async function searchClick(event) {
 
+        event.preventDefault()
         const search_form = document.querySelector('#search-form')
         const send_form = document.querySelector('#send-form')
         
@@ -11,12 +20,10 @@ function Search(props) {
             return
         }
 
-        event.target.disabled = true;
         const response = await fetch(`/search/${search_form.barcode.value}`)
 
         if (response.status === 200) {
             const s_item = await response.json()
-            event.target.disabled = false;
             search_form.style.display = 'none';
             props.setItem(s_item[0]);
             send_form.style.display = 'block';
@@ -27,18 +34,18 @@ function Search(props) {
             
         }
         else {
-            event.target.disabled = false;
             alert('That item does not exist!')
+            search_form.reset()
             return
         }
     }
 
     return (
-            <form id="search-form">
+            <form id="search-form" onSubmit={searchClick}>
                 <h1>Enter Product:</h1>
                 <label>Scan or Enter Barcode:</label>
-                <input name="barcode" type="number" placeholder="Enter Barcode" />
-                <button onClick={searchClick} type='button' className="btn-item">Search</button>
+                <input name="barcode" type="number" placeholder="Enter Barcode" autoFocus={true} />
+                <button type='submit' className="btn-item">Search</button>
             </form>
           )}
 

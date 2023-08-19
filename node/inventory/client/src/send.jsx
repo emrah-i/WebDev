@@ -80,6 +80,7 @@ function Send(props) {
                 <p id="error">{error}</p>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="decrease" />
                 <button onClick={sendClick} type='button' className="btn-item" >Add to List</button>
+                <button type='button' className="btn-item" >Direct Submit</button>
             </form>
           )}
 
