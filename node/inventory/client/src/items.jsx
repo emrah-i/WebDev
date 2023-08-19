@@ -4,6 +4,7 @@ import List from './list_item';
 function Items(props) {
     return (
         <div className="items-display-parent" >
+            <br />
             <h1>All Items:</h1>
             <table className="items-display">
                 <thead>

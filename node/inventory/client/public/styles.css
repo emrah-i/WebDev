@@ -49,7 +49,7 @@ main {
     border: none;
     border-radius: 1rem;
     padding: .5rem 1rem !important;
-    margin: 1rem 0;
+    margin: 1rem 0 0;
     transition: all .3s ease-in-out;
 }
 
@@ -103,4 +103,9 @@ input {
 
 .items-display .btn-item {
     margin: auto !important;
+}
+
+#add-form {
+    display: flex;
+    flex-direction: column;
 }

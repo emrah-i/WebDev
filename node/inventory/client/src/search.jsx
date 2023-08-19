@@ -6,9 +6,7 @@ function Search(props) {
 
         const search_form = document.querySelector('#search-form')
         const send_form = document.querySelector('#send-form')
-
-        console.log(search_form.barcode.value)
-
+        
         if (search_form.barcode.value === '') {
             return
         }
