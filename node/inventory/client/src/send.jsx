@@ -10,28 +10,24 @@ function Send(props) {
         const send_form = document.querySelector('#send-form');
         const increase = send_form.increase.value;
         const decrease = send_form.decrease.value;
-        const barcode = props.item.barcode;
-        const name = props.item.name;
         var change = '';
+
+        change = {
+            barcode: props.item.barcode,
+            name: props.item.name,
+            img: props.item.img
+        }
 
         setError('');
         document.querySelector('#error').style.display = 'none';
 
         if (increase > 0) {
-            change = {
-                barcode: barcode,
-                name: name,
-                type: 'Increase',
-                amount: increase
-            }
+            change.type = 'Increase';
+            change.amount = increase;
         }
         else if (decrease > 0 && (props.item.quantity - decrease) > 0) {
-            change = {
-                barcode: barcode,
-                name: name,
-                type: 'Decrease',
-                amount: decrease
-            }
+            change.type = 'Decrease';
+            change.amount = decrease;
         }
         else {
             document.querySelector('#error').style.display = 'block';
@@ -42,6 +38,8 @@ function Send(props) {
         props.setAll(prevItems => {
             return [...prevItems, change]
         })
+
+        document.querySelector('.items-display-parent > button').scrollIntoView({block: "center"})
     }
 
     function inputChange(event) {
@@ -66,11 +64,11 @@ function Send(props) {
                 <h1>Search Result:</h1>
                 <Display id="item_display" item={props.item} />
                 <label>Add Items:&nbsp;</label>
-                <input onChange={inputChange} placeholder="Enter Quantity" type="number" step="1" name="increase" />
+                <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="increase" />
                 <label>Remove Items:&nbsp;</label>
                 <p id="error">{error}</p>
-                <input onChange={inputChange} placeholder="Enter Quantity" type="number" step="1" name="decrease" />
-                <button onClick={sendClick} type='button' className="btn-items" >Add to List</button>
+                <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="decrease" />
+                <button onClick={sendClick} type='button' className="btn-item" >Add to List</button>
             </form>
           )}
 

@@ -22,6 +22,11 @@ function Search(props) {
             search_form.style.display = 'none';
             props.setItem(s_item[0]);
             send_form.style.display = 'block';
+
+            setTimeout(()=>{
+                send_form.scrollIntoView({block: 'center'})
+            }, 200)
+            
         }
         else {
             event.target.disabled = false;
@@ -35,7 +40,7 @@ function Search(props) {
                 <h1>Enter Product:</h1>
                 <label>Scan or Enter Barcode:</label>
                 <input name="barcode" type="number" placeholder="Enter Barcode" />
-                <button onClick={searchClick} type='button' className="btn-items">Search</button>
+                <button onClick={searchClick} type='button' className="btn-item">Search</button>
             </form>
           )}
 

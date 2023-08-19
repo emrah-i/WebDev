@@ -8,7 +8,7 @@ body {
 }
 
 nav {
-    background-color: #D0D3D4;
+    background-color: #D0D3D490;
 }
 
 nav a {
@@ -16,11 +16,11 @@ nav a {
 }
 
 main {
-    margin: 5rem auto;
+    margin: 5rem 5%;
     border-radius: 1rem;
     padding: 2rem;
     gap: 10rem;
-    background-color: #D0D3D4;
+    background-color: #D0D3D490;
 }
 
 #item-form > * > * {
@@ -28,18 +28,19 @@ main {
     padding: .5rem;
 }
 
-.btn-items {
+.btn-item {
+    width: fit-content;
     display: inline;
     font-size: 1.5rem;
     background-color: #273746;
     color: white;
     border: none;
     border-radius: 1rem;
-    padding: .5rem 1rem;
+    padding: .5rem 1rem !important;
     margin: 1rem 0;
 }
 
-.btn-items:disabled {
+.btn-item:disabled {
     background-color: #27374680;
 }
 
@@ -60,7 +61,6 @@ input {
     display: none;
 }
 
-
 .items-display {
     background-color: white;
     border-radius: 1rem;
@@ -71,4 +71,18 @@ input {
     padding: 1rem;
     border-radius: 1rem !important;
     overflow: hidden;
+}
+
+.order-div {
+    justify-content: center;
+}
+
+.order-div > * {
+    display: flex;
+    align-content: center;
+    margin: auto !important
+}
+
+.items-display .btn-item {
+    margin: auto !important;
 }

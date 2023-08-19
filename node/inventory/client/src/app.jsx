@@ -17,7 +17,7 @@ function App() {
                 <Search setItem={setItem} />
                 <Send item={item} setAll={setAll} />
               </div>
-              <Items all_items={all_items}  />
+              <Items all_items={all_items} setAll={setAll}  />
         </main>
     </div>
   )
