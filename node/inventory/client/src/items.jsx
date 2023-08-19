@@ -5,11 +5,23 @@ function Items(props) {
     return (
         <div className="items-display-parent" >
             <h1>All Items:</h1>
-            <div className="items-display">
+            <table className="items-display">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Barcode</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {props.all_items.map((order, index) => {
                     return <List key={index} order={order} />
                 })}
-            </div>
+                </tbody>
+            </table>
             <button className='btn-item'>Submit All</button>
         </div>
           )}

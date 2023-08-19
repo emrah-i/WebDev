@@ -8,6 +8,7 @@ function Send(props) {
     function sendClick() {
 
         const send_form = document.querySelector('#send-form');
+        const search_form = document.querySelector('#search-form');
         const increase = send_form.increase.value;
         const decrease = send_form.decrease.value;
         var change = '';
@@ -39,6 +40,16 @@ function Send(props) {
             return [...prevItems, change]
         })
 
+        send_form.reset()
+        send_form.increase.disabled = false;
+        send_form.decrease.disabled = false;
+        send_form.style.display = 'none';
+        search_form.style.display = 'block';
+        search_form.reset()
+
+        if (document.querySelector('.items-display').style.display !== 'table') {
+            document.querySelector('.items-display').style.display = 'table';
+        }
         document.querySelector('.items-display-parent > button').scrollIntoView({block: "center"})
     }
 

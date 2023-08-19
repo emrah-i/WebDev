@@ -15,6 +15,18 @@ nav a {
     color: #273746 !important;
 }
 
+.link-item {
+    text-decoration: none;
+}
+
+.link-item:hover {
+    text-decoration: underline;
+}
+
+.link-item:nth-child(1) {
+    margin: auto 1rem;
+}
+
 main {
     margin: 5rem 5%;
     border-radius: 1rem;
@@ -38,6 +50,11 @@ main {
     border-radius: 1rem;
     padding: .5rem 1rem !important;
     margin: 1rem 0;
+    transition: all .3s ease-in-out;
+}
+
+.btn-item:hover {
+    border-radius: 1.5rem;
 }
 
 .btn-item:disabled {
@@ -54,7 +71,7 @@ input {
     border-radius: 1rem;
     margin: .5rem 0;
     padding: .5rem;
-    border: 2px solid #707B7C80;
+    border: 2px solid #D0D3D490;
 }
 
 #send-form {
@@ -62,25 +79,26 @@ input {
 }
 
 .items-display {
+    display: none;
     background-color: white;
     border-radius: 1rem;
-}
-
-.order-div {
+    padding: 10rem;
+    width: 100%;
+    height: fit-content;;
     text-align: center;
+}
+
+.items-display th {
+    border-bottom: .25rem solid #D0D3D490;
+}
+
+.items-display td {
+    border-top: .25rem solid #D0D3D490; 
+}
+
+.items-display td, .items-display th {
+    margin: 5rem;
     padding: 1rem;
-    border-radius: 1rem !important;
-    overflow: hidden;
-}
-
-.order-div {
-    justify-content: center;
-}
-
-.order-div > * {
-    display: flex;
-    align-content: center;
-    margin: auto !important
 }
 
 .items-display .btn-item {
