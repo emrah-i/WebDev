@@ -27,12 +27,13 @@ const Item = new mongoose.model('Item', itemSchema);
 app.get('/search/:barcode', async (req, res) => {
     const entered_barcode = req.params.barcode;
 
-    try {
-        const item = await Item.find({barcode: entered_barcode})
-        res.send(item)
+    const item = await Item.find({barcode: entered_barcode})
+    
+    if (item.length != 0) {
+        res.status(200).json(item)
     }
-    catch {
-        res.status(404)
+    else {
+        res.status(404).json({ error: 'Resource not found' });
     }
 })
 

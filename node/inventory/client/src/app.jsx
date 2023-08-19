@@ -1,18 +1,23 @@
-import React from 'react';
-import Form from './form';
+import React, { useState } from 'react';
+import Search from './search';
+import Send from './send';
 import Items from './items';
 import Nav from './nav';
 
 function App() {
 
+  const [item, setItem] = useState({});
+  const [all_items, setAll] = useState([])
+
   return (
     <div>
         <Nav />
-        <main className='container'>
-            <div className='row row-cols-2'>
-                <Form className="col" />
-                <Items className="col" />
-            </div>
+        <main>
+              <div id="item-form">
+                <Search setItem={setItem} />
+                <Send item={item} setAll={setAll} />
+              </div>
+              <Items all_items={all_items}  />
         </main>
     </div>
   )
