@@ -72,6 +72,7 @@ function All() {
                   <tr>
                       <th>Image</th>
                       <th>Name</th>
+                      <th>Quantity</th>
                       <th>Barcode</th>
                   </tr>
               </thead>

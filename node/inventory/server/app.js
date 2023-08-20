@@ -63,19 +63,42 @@ app.post('/add', async (req, res) => {
 });
 
 app.patch('/edit/:barcode', async (req, res) => {
-    const {name, image, quantity, type, amount} = req.body;
+    const {name, image, quantity, type, amount, original} = req.body;
     const barcode = req.params.barcode;
 
-    const updatedItem = {
-        name: name,
-        img: image,
-        quantity: quantity,
-    }
-    console.log(req.body)
+    let quantityChange = ''
 
-    await Item.findOneAndUpdate({ barcode: barcode }, updatedItem, { new: true })
-    res.redirect('/view/' + barcode);
-})
+    if (type !== undefined) {
+
+        const intOriginal = parseInt(original)
+        const intAmount = parseInt(amount)
+
+        if (type === 'increase') {
+
+            quantityChange = {
+                quantity: (intOriginal + intAmount)
+            }
+        }
+        else {
+            quantityChange = {
+                quantity: (intOriginal - intAmount)
+            };
+        }
+
+        await Item.findOneAndUpdate({ barcode: barcode }, quantityChange, { new: true });
+        res.redirect('/');
+    }
+    else {
+        const updatedItem = {
+            name: name,
+            image: image,
+            quantity: quantity,
+        };
+
+        await Item.findOneAndUpdate({ barcode: barcode }, updatedItem, { new: true });
+        res.redirect('/');
+    }
+}) 
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);

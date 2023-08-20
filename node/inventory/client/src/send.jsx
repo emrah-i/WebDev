@@ -11,7 +11,9 @@ function Send(props) {
         const search_form = document.querySelector('#search-form');
         const increase = send_form.increase.value;
         const decrease = send_form.decrease.value;
-        var change = {}
+        var change = {
+            original: send_form.original.value
+        }
 
         setError('');
         document.querySelector('#error').style.display = 'none';
@@ -37,7 +39,7 @@ function Send(props) {
         search_form.style.display = 'block';
         search_form.reset()
 
-        await fetch(`/edit/${props.item.barcode}`, {method: "PATCH", body: change})
+        await fetch(`/edit/${props.item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(change)})
         
     }
 
@@ -62,6 +64,7 @@ function Send(props) {
             <form id="send-form">
                 <h1>Search Result:</h1>
                 <Display id="item_display" item={props.item} />
+                <input type="hidden" defaultValue={props.item.quantity} name="original" />
                 <label>Add Items:&nbsp;</label>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="increase" />
                 <label>Remove Items:&nbsp;</label>
