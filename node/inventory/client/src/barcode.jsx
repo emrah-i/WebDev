@@ -9,10 +9,9 @@ function Barcode(props) {
             JsBarcode(canvas, props.barcode, {
                 format: "UPC"
             });
-            console.log(props.barcode)
         }
         canvasBarcode()
-    }, [props.barcode])
+    }, [props.barcode, props.index])
 
     return(<canvas id={`barcodeCanvas${props.index}`}></canvas>)
 }

@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './search';
 import Send from './send';
-import Items from './items';
 import Nav from './nav';
 import AddForm from './add';
-import Display from './display';
 import EditView from './editview';
 import Barcode from './barcode';
+import TableView from './tableview';
 
 function Main(props) {
   return (<main>
@@ -15,7 +14,6 @@ function Main(props) {
               <Search setItem={props.setItem} />
               <Send item={props.item} setAll={props.setAll} />
             </div>
-            <Items all_items={props.all_items}  />
           </main>)
 }
 
@@ -49,13 +47,43 @@ function All() {
     fetchData()
   }, []);
 
-  return (<main>
-            {allDisplay.map((item, index) => (
-              <React.Fragment key={item._id}>
-                <Display item={item} /> 
-                <Barcode barcode={item.barcode} index={index} />
-              </React.Fragment>)
-              )}
+  // function downloadBarcode(index) {
+  //   var canvas = document.getElementById(`barcodeCanvas${index}`);
+  //   var dataURL = canvas.toDataURL("image/jpg");
+  //   var downloadLink = document.createElement("a");
+  //   downloadLink.href = dataURL;
+  //   downloadLink.download = "barcode.jpeg";
+  //   downloadLink.click();
+  // };
+
+  // function copyBarcode(barcode) {
+  //   const copy_btn = document.querySelector('#copy-btn')
+  //     navigator.clipboard.writeText(barcode);
+  //     copy_btn.innerHTML = 'Copied ✓';
+
+  //     setTimeout(()=>{
+  //       copy_btn.innerHTML = 'Copy Barcode';
+  //     }, 1000)
+  // }
+
+  return (<main id="all-div">
+            <table className="items-display ">
+              <thead>
+                  <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Barcode</th>
+                  </tr>
+              </thead>
+              <tbody>
+              {allDisplay.map((item, index) => (
+                <tr key={item._id}>
+                  <TableView order={item} /> 
+                  <td><Barcode barcode={item.barcode} index={index} /></td>
+                </tr>)
+                )}
+              </tbody>
+            </table>
           </main>)
 }
 
@@ -67,13 +95,12 @@ function View(props) {
 
 function App() {
   const [item, setItem] = useState({});
-  const [all_items, setAll] = useState([])
 
   return (
     <Router>
         <Nav />
         <Routes>
-          <Route path="/" element={<Main item={item} setItem={setItem} all_items={all_items} setAll={setAll} />} />
+          <Route path="/" element={<Main item={item} setItem={setItem} />} />
           <Route path="/add" element={<Add />} />
           <Route path="/edit" element={<Edit setItem={setItem} item={item} />} />
           <Route path="/all" element={<All />} />

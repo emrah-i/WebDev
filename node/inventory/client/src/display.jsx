@@ -6,7 +6,7 @@ function Display(props) {
         <div>
             <h2>{item.name}</h2>
             <p>Quantity in Stock: <span id="item-quantity">{item.quantity}</span></p>
-            <img src={item.img} alt="Search Item" width="20%" />
+            <img src={item.image} alt="Search Item" width="20%" />
         </div>
         )
 }

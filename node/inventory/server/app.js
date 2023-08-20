@@ -57,13 +57,13 @@ app.get('/view/:barcode', async (req, res) => {
 app.post('/add', async (req, res) => {
     const {name, image, quantity, barcode} = req.body
 
-    const item = new Item({name: name, img: image, quantity: quantity, barcode: barcode})
+    const item = new Item({name: name, image: image, quantity: quantity, barcode: barcode})
     await item.save()
     res.redirect('/view/' + barcode);
 });
 
-app.put('/edit/:barcode', async (req, res) => {
-    const {name, image, quantity} = req.body;
+app.patch('/edit/:barcode', async (req, res) => {
+    const {name, image, quantity, type, amount} = req.body;
     const barcode = req.params.barcode;
 
     const updatedItem = {

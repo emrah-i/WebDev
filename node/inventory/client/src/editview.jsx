@@ -6,7 +6,7 @@ function EditView(props) {
     async function submitEdit() {
         const edit_form = document.querySelector('#edit-form')
 
-        await fetch(`/edit/${item.barcode}`, {method: "PUT", headers: {"Content-Type": "application/json"}, 
+        await fetch(`/edit/${item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, 
             body: JSON.stringify({
                     name: edit_form.name.value,
                     quantity: edit_form.quantity.value,
@@ -24,8 +24,8 @@ function EditView(props) {
             <label>Quantity:</label>
             <input type="text" placeholder="Enter Quantity" name="quantity" defaultValue={item.quantity} required />
             <label>Image:</label>
-            <img src={item.img} alt="Search Item" width="20%" />
-            <input type="text" placeholder="Enter Source" name="image" defaultValue={item.img} required />
+            <img src={item.image} alt="Search Item" width="20%" />
+            <input type="text" placeholder="Enter Source" name="image" defaultValue={item.image} required />
             <button onClick={submitEdit} type="button" className="btn-item">Edit</button>
         </form>
       )

@@ -1,16 +1,15 @@
 import React from "react";
+import TableView from './tableview';
 
 function List(props) {
     const order = props.order
     return (
-        <tr>
-            <td><img src={order.img} alt="Order" width="150" /></td>
-            <td>{order.barcode}</td>
-            <td>{order.name}</td>
+        <React.Fragment>
+            <TableView order={order} />
             <td>{order.type}</td>
             <td>{order.amount}</td>
             <td><button className="btn-item">Remove</button></td>
-        </tr>
+        </React.Fragment>
           )}
 
 export default List;

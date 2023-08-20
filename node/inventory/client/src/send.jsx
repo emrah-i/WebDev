@@ -5,19 +5,13 @@ function Send(props) {
 
     const [error, setError] = useState('');
 
-    function sendClick() {
+    async function sendClick() {
 
         const send_form = document.querySelector('#send-form');
         const search_form = document.querySelector('#search-form');
         const increase = send_form.increase.value;
         const decrease = send_form.decrease.value;
-        var change = '';
-
-        change = {
-            barcode: props.item.barcode,
-            name: props.item.name,
-            img: props.item.img
-        }
+        var change = {}
 
         setError('');
         document.querySelector('#error').style.display = 'none';
@@ -36,10 +30,6 @@ function Send(props) {
             return
         }
 
-        props.setAll(prevItems => {
-            return [...prevItems, change]
-        })
-
         send_form.reset()
         send_form.increase.disabled = false;
         send_form.decrease.disabled = false;
@@ -47,10 +37,8 @@ function Send(props) {
         search_form.style.display = 'block';
         search_form.reset()
 
-        if (document.querySelector('.items-display').style.display !== 'table') {
-            document.querySelector('.items-display').style.display = 'table';
-        }
-        document.querySelector('.items-display-parent > button').scrollIntoView({block: "center"})
+        await fetch(`/edit/${props.item.barcode}`, {method: "PATCH", body: change})
+        
     }
 
     function inputChange(event) {
@@ -79,8 +67,7 @@ function Send(props) {
                 <label>Remove Items:&nbsp;</label>
                 <p id="error">{error}</p>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="decrease" />
-                <button onClick={sendClick} type='button' className="btn-item" >Add to List</button>
-                <button type='button' className="btn-item" >Direct Submit</button>
+                <button onClick={sendClick} type='button' className="btn-item" >Submit</button>
             </form>
           )}
 

@@ -79,6 +79,10 @@ input {
     display: none;
 }
 
+#add_btn {
+    display: none;
+}
+
 .items-display {
     display: none;
     background-color: white;
@@ -125,4 +129,8 @@ input {
 
 #edit-form {
     display: none;
+}
+
+#all-div table {
+    display: table !important;
 }

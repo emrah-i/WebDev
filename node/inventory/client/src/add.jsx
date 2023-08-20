@@ -1,4 +1,5 @@
 import React from "react";
+import BarcodeOptions from "./barcode_options";
 import JsBarcode from "jsbarcode";
 
 function AddForm() {
@@ -74,7 +75,10 @@ function AddForm() {
             format: "UPC"
         });
 
-        document.querySelector("#add-form").barcode.value = genBarcode;
+        const add_form = document.querySelector("#add-form")
+
+        add_form.barcode.value = genBarcode;
+        add_form.add_btn.style.display = "block";
         event.target.style.display = 'none';
 
     }
@@ -109,9 +113,8 @@ function AddForm() {
                 <input type="text" placeholder="Enter Quantity" name="quantity" required />
                 <canvas id="barcodeCanvas"></canvas>
                 <button onClick={calculateBarcode} className="btn-item" type="button">Generate Barcode</button>
-                <button className="btn-item" type="submit">Add Item</button>
-                <button onClick={downloadBarcode} className="btn-item extra-btn" type="button">Download JPG</button>
-                <button onClick={copyBarcode} className="btn-item extra-btn" type="button" name="copy">Copy Barcode</button>
+                <button className="btn-item" type="submit" id="add_btn" name="add_btn">Add Item</button>
+                <BarcodeOptions downloadBarcode={downloadBarcode} copyBarcode={copyBarcode} />
             </form>)
 }
 
