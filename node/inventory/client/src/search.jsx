@@ -15,6 +15,7 @@ function Search(props) {
         event.preventDefault()
         const search_form = document.querySelector('#search-form')
         const send_form = document.querySelector('#send-form')
+        const edit_form = document.querySelector('#edit-form')
         
         if (search_form.barcode.value === '') {
             return
@@ -26,12 +27,21 @@ function Search(props) {
             const s_item = await response.json()
             search_form.style.display = 'none';
             props.setItem(s_item[0]);
-            send_form.style.display = 'block';
 
-            setTimeout(()=>{
-                send_form.scrollIntoView({block: 'center'})
-            }, 200)
-            
+            if (window.location.pathname === '/') {
+                send_form.style.display = 'block';
+
+                setTimeout(()=>{
+                    send_form.scrollIntoView({block: 'center'})
+                }, 200)
+            }
+            else {
+                edit_form.style.display = 'block';
+
+                setTimeout(()=>{
+                    edit_form.scrollIntoView({block: 'center'})
+                }, 200)
+            }
         }
         else {
             alert('That item does not exist!')

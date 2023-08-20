@@ -35,7 +35,7 @@ main {
     background-color: #D0D3D490;
 }
 
-#item-form > * > * {
+#item-form > * > *, #edit-page > * > * {
     display: block;
     padding: .5rem;
 }
@@ -55,6 +55,7 @@ main {
 
 .btn-item:hover {
     border-radius: 1.5rem;
+    transform: scale(1.1);
 }
 
 .btn-item:disabled {
@@ -120,4 +121,8 @@ input {
     margin: .8rem 0 0;
     width: 30%;
     height: auto;
+}
+
+#edit-form {
+    display: none;
 }
