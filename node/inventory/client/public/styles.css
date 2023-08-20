@@ -109,3 +109,15 @@ input {
     display: flex;
     flex-direction: column;
 }
+
+.extra-btn {
+    background-color: #1A5276 !important;
+    display: none;
+}
+
+#barcodeCanvas {
+    display: none;
+    margin: .8rem 0 0;
+    width: 30%;
+    height: auto;
+}

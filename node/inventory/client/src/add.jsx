@@ -3,7 +3,7 @@ import JsBarcode from "jsbarcode";
 
 function AddForm() {
 
-    function calculateBarcode() {
+    async function calculateBarcode(event) {
 
         // Number system identifier
         // 0, 1 , 6, 7 and 8 are for regular UPC codes.
@@ -24,10 +24,7 @@ function AddForm() {
 
         if (productCode.length < 5) {
             productCode = productCode.padStart(5, '0')
-            console.log(productCode)
         }
-
-        console.log(productCode)
 
         // To calculate check digit:
         // Add all of the digits in the odd positions (digits in position 1, 3, 5, 7, 9, and 11)
@@ -37,7 +34,6 @@ function AddForm() {
         // Determine what number needs to be added to the result of step 4 in order to create a multiple of 10.
 
         let genBarcode = [...(manCode + productCode)]
-        console.log(genBarcode)
         let oddSum = 0
         let evenSum = 0
 
@@ -53,9 +49,7 @@ function AddForm() {
 
         oddSum = oddSum * 3
         const sum = oddSum + evenSum
-        console.log(sum)
         let checkDigit = String(10 - (sum % 10))
-        console.log(checkDigit)
 
         if (checkDigit === '10') {
             calculateBarcode()
@@ -64,25 +58,60 @@ function AddForm() {
 
         genBarcode = [...genBarcode, checkDigit].join('')
 
-        var canvas = document.getElementById("barcodeCanvas");
+        const response = await fetch('/allcodes') 
+        const all_codes = await response.json()
 
+        if (all_codes.find(item => item === genBarcode) != null) {
+            calculateBarcode()
+            return
+        }
+
+        var canvas = document.getElementById("barcodeCanvas");
+        document.querySelectorAll(".extra-btn").forEach(element=>{element.style.display = 'block';})
+        canvas.style.display = 'block';
+        
         JsBarcode(canvas, genBarcode, {
             format: "UPC"
         });
 
+        document.querySelector("#add-form").barcode.value = genBarcode;
+        event.target.style.display = 'none';
+
     }
 
-    return (<form id="add-form">
+    function downloadBarcode() {
+        var canvas = document.getElementById("barcodeCanvas");
+        var dataURL = canvas.toDataURL("image/jpg");
+        var downloadLink = document.createElement("a");
+        downloadLink.href = dataURL;
+        downloadLink.download = "barcode.jpeg";
+        downloadLink.click();
+    };
+
+    function copyBarcode() {
+        const add_form = document.querySelector("#add-form")
+        navigator.clipboard.writeText(add_form.barcode.value);
+        add_form.copy.innerHTML = 'Copied ✓';
+
+        setTimeout(()=>{
+            add_form.copy.innerHTML = 'Copy Barcode';
+        }, 1000)
+    }
+
+    return (<form id="add-form" action="/add" method="post">
                 <h1>Item Information:</h1>
+                <input type="hidden" name="barcode" />
                 <label>Name:</label>
-                <input type="text" placeholder="Enter Name" />
+                <input type="text" placeholder="Enter Name" name="name" required />
                 <label>Image:</label>
-                <input type="text" placeholder="Enter Source" />
+                <input type="text" placeholder="Enter Source" name="image" required />
                 <label>Quantity:</label>
-                <input type="text" placeholder="Enter Quantity" />
+                <input type="text" placeholder="Enter Quantity" name="quantity" required />
                 <canvas id="barcodeCanvas" height="10%"></canvas>
                 <button onClick={calculateBarcode} className="btn-item" type="button">Generate Barcode</button>
                 <button className="btn-item" type="submit">Add Item</button>
+                <button onClick={downloadBarcode} className="btn-item extra-btn" type="button">Download JPG</button>
+                <button onClick={copyBarcode} className="btn-item extra-btn" type="button" name="copy">Copy Barcode</button>
             </form>)
 }
 

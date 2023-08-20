@@ -24,6 +24,12 @@ const itemSchema = new mongoose.Schema({
 
 const Item = new mongoose.model('Item', itemSchema);
 
+app.get('/allcodes', async (req, res) => {
+    const all = await Item.find({});
+    const barcodes = all.map(element => element.barcode);
+    res.send(barcodes);
+});
+
 app.get('/search/:barcode', async (req, res) => {
     const entered_barcode = req.params.barcode;
 
@@ -35,6 +41,23 @@ app.get('/search/:barcode', async (req, res) => {
     else {
         res.status(404).json({ error: 'Resource not found' });
     }
+})
+
+app.get('/view/:barcode', async (req, res) => {
+    
+})
+
+
+app.post('/add', async (req, res) => {
+    const {name, image, quantity, barcode} = req.body
+
+    const item = new Item({name: name, img: image, quantity: quantity, barcode: barcode})
+    await item.save()
+    res.redirect('/')
+});
+
+app.put('/edit', async (req, res) => {
+
 })
 
 app.listen(port, () => {

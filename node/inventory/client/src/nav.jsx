@@ -20,6 +20,9 @@ function Nav() {
                 <li className="nav-item">
                     <Link className="link-item" to="/edit">Edit Item</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="link-item" to="/view">View Item</Link>
+                </li>
                 </ul>
             </div>
             </div>

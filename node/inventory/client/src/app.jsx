@@ -33,6 +33,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/add" element={<Add />} />
           <Route path="/edit" element={<Main />} />
+          <Route path="/view" element={<Main />} />
         </Routes>
     </Router>
   )
