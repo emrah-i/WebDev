@@ -9,6 +9,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
     extended: true
 }))
+app.use(express.json())
 
 mongoose.connect("mongodb://127.0.0.1:27017/inventoryDB", {
     useNewUrlParser: true,
@@ -53,11 +54,22 @@ app.post('/add', async (req, res) => {
 
     const item = new Item({name: name, img: image, quantity: quantity, barcode: barcode})
     await item.save()
-    res.redirect('/')
+    res.redirect('/view/' + barcode);
 });
 
-app.put('/edit', async (req, res) => {
+app.put('/edit/:barcode', async (req, res) => {
+    const {name, image, quantity} = req.body;
+    const barcode = req.params.barcode;
 
+    const updatedItem = {
+        name: name,
+        img: image,
+        quantity: quantity,
+    }
+    console.log(req.body)
+
+    await Item.findOneAndUpdate({ barcode: barcode }, updatedItem, { new: true })
+    res.redirect('/view/' + barcode);
 })
 
 app.listen(port, () => {
