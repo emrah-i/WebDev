@@ -107,7 +107,7 @@ function AddForm() {
                 <input type="text" placeholder="Enter Source" name="image" required />
                 <label>Quantity:</label>
                 <input type="text" placeholder="Enter Quantity" name="quantity" required />
-                <canvas id="barcodeCanvas" height="10%"></canvas>
+                <canvas id="barcodeCanvas"></canvas>
                 <button onClick={calculateBarcode} className="btn-item" type="button">Generate Barcode</button>
                 <button className="btn-item" type="submit">Add Item</button>
                 <button onClick={downloadBarcode} className="btn-item extra-btn" type="button">Download JPG</button>

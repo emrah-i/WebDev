@@ -25,6 +25,11 @@ const itemSchema = new mongoose.Schema({
 
 const Item = new mongoose.model('Item', itemSchema);
 
+app.get('/all', async (req, res) => {
+    const all = await Item.find({});
+    res.send(all);
+})
+
 app.get('/allcodes', async (req, res) => {
     const all = await Item.find({});
     const barcodes = all.map(element => element.barcode);

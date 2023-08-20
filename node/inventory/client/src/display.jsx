@@ -8,6 +8,7 @@ function Display(props) {
             <p>Quantity in Stock: <span id="item-quantity">{item.quantity}</span></p>
             <img src={item.img} alt="Search Item" width="20%" />
         </div>
-          )}
+        )
+}
 
 export default Display;

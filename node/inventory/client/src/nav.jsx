@@ -21,7 +21,7 @@ function Nav() {
                     <Link className="link-item" to="/edit">Edit Item</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="link-item" to="/view">View Item</Link>
+                    <Link className="link-item" to="/all">All Items</Link>
                 </li>
                 </ul>
             </div>
