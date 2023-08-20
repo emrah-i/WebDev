@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Display from './display';
 
 function Send(props) {
 
     const [error, setError] = useState('');
+    const navigate = useNavigate()
 
     async function sendClick() {
 
@@ -39,7 +41,11 @@ function Send(props) {
         search_form.style.display = 'block';
         search_form.reset()
 
-        await fetch(`/edit/${props.item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(change)})
+        const response = await fetch(`/edit/${props.item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(change)})
+
+        if (response.status === 200) {
+            navigate('/all', { replace: true })
+        }
         
     }
 

@@ -86,7 +86,7 @@ app.patch('/edit/:barcode', async (req, res) => {
         }
 
         await Item.findOneAndUpdate({ barcode: barcode }, quantityChange, { new: true });
-        res.redirect('/');
+        res.status(200).send("Success");
     }
     else {
         const updatedItem = {
@@ -96,7 +96,7 @@ app.patch('/edit/:barcode', async (req, res) => {
         };
 
         await Item.findOneAndUpdate({ barcode: barcode }, updatedItem, { new: true });
-        res.redirect('/');
+        res.status(200).send('Success');
     }
 }) 
 

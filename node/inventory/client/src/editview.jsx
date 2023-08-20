@@ -1,18 +1,24 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 function EditView(props) {
     const item = props.item
+    const navigate = useNavigate()
 
     async function submitEdit() {
         const edit_form = document.querySelector('#edit-form')
 
-        await fetch(`/edit/${item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, 
+        const response = await fetch(`/edit/${item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, 
             body: JSON.stringify({
                     name: edit_form.name.value,
                     quantity: edit_form.quantity.value,
                     image: edit_form.image.value
                 })
             });
+
+        if (response.status === 200) {
+            navigate('/all', { replace: true })
+        }
     }
 
     return (
