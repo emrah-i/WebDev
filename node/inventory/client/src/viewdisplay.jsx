@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Display from "./display";
+import Barcode from "./barcode";
 
 function ViewDisplay(props) {
     const { barcode } = useParams();
@@ -16,7 +17,10 @@ function ViewDisplay(props) {
     }, [])
 
     return (
-        <Display item={item} />
+        <React.Fragment>
+            <Display item={item} />
+            <Barcode index={0} barcode={item.barcode} />
+        </React.Fragment>
         )
 }
 
