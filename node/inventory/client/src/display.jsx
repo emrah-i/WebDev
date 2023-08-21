@@ -1,7 +1,7 @@
 import React from "react";
 
 function Display(props) {
-    const item = props.item 
+    const item = props.item
     return (
         <div>
             <h2>{item.name}</h2>

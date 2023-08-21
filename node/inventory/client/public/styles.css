@@ -134,3 +134,53 @@ input {
 #all-div table {
     display: table !important;
 }
+
+.delete-btn {
+    background-color: #C0392B !important;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: .2rem solid #273746;
+    margin: 10rem auto;
+    padding: 1rem;
+    width: 35%;
+}
+
+.modal-content > div {
+    margin: 2rem auto 0;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.listBarcodeItem {
+    position: relative;
+    cursor: pointer;
+}
+
+.tip {
+    position: absolute;
+    visibility: hidden;
+    width: 120px;
+    background-color: #273746;
+    color:  white;
+    text-align: center;
+    border-radius: .5rem;
+    font-size: 1.1rem;
+    padding: .5rem;
+    z-index: 1;
+    bottom: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.listBarcodeItem:hover .tip {
+    visibility: visible;
+    opacity: 1;
+}

@@ -13,7 +13,23 @@ function Barcode(props) {
         canvasBarcode()
     }, [props.barcode, props.index])
 
-    return(<canvas id={`barcodeCanvas${props.index}`}></canvas>)
+    function copyBarcode() {
+        const tip = document.querySelector(`#barcodeCanvas${props.index} + .tip`)
+        navigator.clipboard.writeText(props.barcode);
+        tip.innerHTML = 'Copied ✓';
+
+        setTimeout(()=>{
+            tip.innerHTML = 'Click to copy';
+        }, 1000)
+    }
+
+    return(
+        <React.Fragment>
+            <div onClick={copyBarcode} className="listBarcodeItem">
+                <canvas id={`barcodeCanvas${props.index}`}></canvas>
+                <p className="tip">Click to copy</p>
+            </div>
+        </React.Fragment>)
 }
 
 export default Barcode;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import Search from './search';
 import Send from './send';
 import Nav from './nav';
@@ -7,6 +7,7 @@ import AddForm from './add';
 import EditView from './editview';
 import Barcode from './barcode';
 import TableView from './tableview';
+import ViewDisplay from './viewdisplay';
 
 function Main(props) {
   return (<main>
@@ -32,7 +33,8 @@ function Edit(props) {
 
 function All() {
 
-  const [allDisplay, setAllDisplay] = useState([])
+  const [allDisplay, setAllDisplay] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -74,6 +76,7 @@ function All() {
                       <th>Name</th>
                       <th>Quantity</th>
                       <th>Barcode</th>
+                      <th>View</th>
                   </tr>
               </thead>
               <tbody>
@@ -81,6 +84,7 @@ function All() {
                 <tr key={item._id}>
                   <TableView order={item} /> 
                   <td><Barcode barcode={item.barcode} index={index} /></td>
+                  <td><button onClick={()=>{navigate(`/view/${item.barcode}`, { replace: true })}} className="btn-item">View Item</button></td>
                 </tr>)
                 )}
               </tbody>
@@ -89,8 +93,10 @@ function All() {
 }
 
 function View(props) {
+  const barcode = useParams();
+
   return (<main>
-            
+            <ViewDisplay barcode={barcode.barcode} setItem={props.setItem} item={props.item} />
           </main>)
 }
 
@@ -105,7 +111,7 @@ function App() {
           <Route path="/add" element={<Add />} />
           <Route path="/edit" element={<Edit setItem={setItem} item={item} />} />
           <Route path="/all" element={<All />} />
-          <Route path="/view/:barcode" element={<View />} />
+          <Route path="/view/:barcode" element={<View setItem={setItem} item={item} />} />
         </Routes>
     </Router>
   )

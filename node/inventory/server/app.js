@@ -45,12 +45,33 @@ app.get('/search/:barcode', async (req, res) => {
         res.status(200).json(item)
     }
     else {
-        res.status(404).json({ error: 'Resource not found' });
+        res.status(404).json({ error: 'Item not found' });
     }
 })
 
 app.get('/view/:barcode', async (req, res) => {
-    
+    const entered_barcode = req.params.barcode;
+
+    try {
+        const item = await Item.find({barcode: entered_barcode})
+        res.status(200).send(item[0])
+    }
+    catch {
+        res.status(404).json({ error: 'Item not found' });
+    }
+})
+
+app.get('/delete/:barcode', async (req, res) => {
+    const entered_barcode = req.params.barcode;
+
+    try {
+        await Item.deleteOne({barcode: entered_barcode})
+        res.status(200).json('Success')
+    }
+    catch {
+        res.status(404).json({ error: 'Item not found' });
+    }
+
 })
 
 
