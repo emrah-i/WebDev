@@ -1,18 +1,23 @@
+:root {
+    --main-color: #273746;
+    --sec-color: #C0C5CB;
+}
+
 body {
     font-family: 'Ubuntu', sans-serif;
-    background-color:#273746;
-    color: #273746 !important;
+    background-color: var(--main-color);
+    color: var(--main-color) !important;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
     background-blend-mode: overlay;
     font-size: 1.5rem;
 }
 
 nav {
-    background-color: #D0D3D490;
+    background-color: var(--sec-color);
 }
 
 nav a {
-    color: #273746 !important;
+    color: var(--main-color) !important;
 }
 
 .link-item {
@@ -20,6 +25,7 @@ nav a {
 }
 
 .link-item:hover {
+    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -32,7 +38,7 @@ main {
     border-radius: 1rem;
     padding: 2rem;
     gap: 10rem;
-    background-color: #D0D3D490;
+    background-color: var(--sec-color);
 }
 
 #item-form > * > *, #edit-page > * > * {
@@ -44,7 +50,7 @@ main {
     width: fit-content;
     display: inline;
     font-size: 1.5rem;
-    background-color: #273746;
+    background-color: var(--main-color);
     color: white;
     border: none;
     border-radius: 1rem;
@@ -54,6 +60,7 @@ main {
 }
 
 .btn-item:hover {
+    cursor: pointer;
     border-radius: 1.5rem;
     transform: scale(1.1);
 }
@@ -72,7 +79,7 @@ input {
     border-radius: 1rem;
     margin: .5rem 0;
     padding: .5rem;
-    border: 2px solid #D0D3D490;
+    border: 2px solid var(--sec-color);
 }
 
 #send-form {
@@ -94,16 +101,25 @@ input {
 }
 
 .items-display th {
-    border-bottom: .25rem solid #D0D3D490;
+    border-bottom: .25rem solid var(--sec-color);
 }
 
 .items-display td {
-    border-top: .25rem solid #D0D3D490; 
+    border-top: .25rem solid var(--sec-color); 
 }
 
 .items-display td, .items-display th {
     margin: 5rem;
     padding: 1rem;
+}
+
+.items-display td:nth-child(4) {
+    width: 20%;
+}
+
+.items-display td:nth-child(4) > * {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .items-display .btn-item {
@@ -144,7 +160,7 @@ input {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: .2rem solid #273746;
+    border: .2rem solid var(--main-color);
     margin: 10rem auto;
     padding: 1rem;
     width: 35%;
@@ -164,10 +180,10 @@ input {
 }
 
 .tip {
+    width: fit-content;
     position: absolute;
     visibility: hidden;
-    width: 120px;
-    background-color: #273746;
+    background-color: var(--main-color);
     color:  white;
     text-align: center;
     border-radius: .5rem;

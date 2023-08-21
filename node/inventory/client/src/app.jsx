@@ -7,7 +7,6 @@ import AddForm from './add';
 import EditView from './editview';
 import Barcode from './barcode';
 import TableView from './tableview';
-import ViewDisplay from './viewdisplay';
 
 function Main(props) {
   return (<main>
@@ -49,26 +48,19 @@ function All() {
     fetchData()
   }, []);
 
-  // function downloadBarcode(index) {
-  //   var canvas = document.getElementById(`barcodeCanvas${index}`);
-  //   var dataURL = canvas.toDataURL("image/jpg");
-  //   var downloadLink = document.createElement("a");
-  //   downloadLink.href = dataURL;
-  //   downloadLink.download = "barcode.jpeg";
-  //   downloadLink.click();
-  // };
+  function handleClick(barcodeValue, path) {
+    navigate(path, { replace: true })
 
-  // function copyBarcode(barcode) {
-  //   const copy_btn = document.querySelector('#copy-btn')
-  //     navigator.clipboard.writeText(barcode);
-  //     copy_btn.innerHTML = 'Copied ✓';
-
-  //     setTimeout(()=>{
-  //       copy_btn.innerHTML = 'Copy Barcode';
-  //     }, 1000)
-  // }
+    setTimeout(()=>{
+      const search_form = document.querySelector('#search-form');
+      
+      search_form.barcode.value = barcodeValue;
+      search_form.search_submit.click()
+    }, 250)
+  }
 
   return (<main id="all-div">
+            <h1>All Items:</h1>
             <table className="items-display ">
               <thead>
                   <tr>
@@ -84,21 +76,16 @@ function All() {
                 <tr key={item._id}>
                   <TableView order={item} /> 
                   <td><Barcode barcode={item.barcode} index={index} /></td>
-                  <td><button onClick={()=>{navigate(`/view/${item.barcode}`, { replace: true })}} className="btn-item">View Item</button></td>
+                  <td>
+                    <button onClick={()=>{handleClick(item.barcode, '/')}} className="btn-item">Change Quantity</button><br/><p></p>
+                    <button onClick={()=>{handleClick(item.barcode, '/edit')}} className="btn-item change-btn">Edit Item</button>
+                  </td>
                 </tr>)
                 )}
               </tbody>
             </table>
           </main>)
 }
-
-function View(props) {
-
-  return (<main>
-            <ViewDisplay setItem={props.setItem} item={props.item} />
-          </main>)
-}
-
 function App() {
   const [item, setItem] = useState({});
 
@@ -110,7 +97,6 @@ function App() {
           <Route exact path="/add" element={<Add />} />
           <Route exact path="/edit" element={<Edit setItem={setItem} item={item} />} />
           <Route exact path="/all" element={<All />} />
-          <Route path="/view/:barcode" element={<View setItem={setItem} item={item} />} />
         </Routes>
     </Router>
   )

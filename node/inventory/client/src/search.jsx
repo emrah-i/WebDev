@@ -55,7 +55,7 @@ function Search(props) {
                 <h1>Enter Product:</h1>
                 <label>Scan or Enter Barcode:</label>
                 <input name="barcode" type="number" placeholder="Enter Barcode" autoFocus={true} />
-                <button type='submit' className="btn-item">Search</button>
+                <button type='submit' className="btn-item" name="search_submit">Search</button>
             </form>
           )}
 
