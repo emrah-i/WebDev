@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Display from './display';
+import { popupShow } from "./popup";
 
 function Send(props) {
-
+    const { item, setPopupText } = props;
     const [error, setError] = useState('');
     const navigate = useNavigate()
 
@@ -20,12 +21,18 @@ function Send(props) {
         setError('');
         document.querySelector('#error').style.display = 'none';
 
-        if (increase > 0) {
-            change.type = 'Increase';
+        if (increase === '' && decrease === ''){
+            return
+        }
+        else if (increase !== '' && decrease !== ''){
+            send_form.decrease.value = ''
+        }
+        else if (increase > 0) {
+            change.type = 'increase';
             change.amount = increase;
         }
-        else if (decrease > 0 && (props.item.quantity - decrease) > 0) {
-            change.type = 'Decrease';
+        else if (decrease > 0 && (item.quantity - decrease) > 0) {
+            change.type = 'decrease';
             change.amount = decrease;
         }
         else {
@@ -41,22 +48,26 @@ function Send(props) {
         search_form.style.display = 'block';
         search_form.reset()
 
-        const response = await fetch(`/edit/${props.item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(change)})
+        const response = await fetch(`/edit/${item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(change)})
 
         if (response.status === 200) {
-            navigate('/all', { replace: true })
+            navigate('/', { replace: true })
+            popupShow(props, "Item successfuly updated!")
         }
-        
+        if (response.status === 404) {
+            navigate('/', { replace: true })
+            popupShow(props, "Error!", 'error')
+        }
     }
 
     function inputChange(event) {
         const name = event.target.name;
         const send_form = document.querySelector('#send-form')
 
-        if (name === 'increase' && send_form.increase.value !== '') {
+        if (name === 'increase' && send_form.increase.value) {
             send_form.decrease.disabled = true;
         }
-        else if (name === 'decrease' && send_form.decrease.value !== '') {
+        else if (name === 'decrease' && send_form.decrease.value) {
             // Decrease cant make order negative
             send_form.increase.disabled = true;
         }
@@ -69,8 +80,8 @@ function Send(props) {
     return (
             <form id="send-form">
                 <h1>Search Result:</h1>
-                <Display id="item_display" item={props.item} />
-                <input type="hidden" defaultValue={props.item.quantity} name="original" />
+                <Display id="item_display" item={item} />
+                <input type="hidden" defaultValue={item.quantity} name="original" />
                 <label>Add Items:&nbsp;</label>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="increase" />
                 <label>Remove Items:&nbsp;</label>

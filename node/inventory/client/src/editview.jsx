@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { popupShow } from "./popup";
 
 function EditView(props) {
     const [showModal, setShowModal] = useState(false);
@@ -19,15 +20,30 @@ function EditView(props) {
 
         if (response.status === 200) {
             navigate('/all', { replace: true })
+            popupShow(props, "Item successfully edited!")
+            setTimeout(()=>{
+                const inputElement = document.querySelector('#all_search_input').value = item.name;
+                const spaceEvent = new KeyboardEvent('keydown', {key: ' '});
+                inputElement.dispatchEvent(spaceEvent);  
+            }, 200)
+            }
+        if (response.status === 404) {
+            navigate('/all', { replace: true })
+            popupShow(props, "Error!", 'error')
+            }
         }
-    }
 
     async function submitDelete() {
         setShowModal(false);
         const response = await fetch(`/delete/${props.item.barcode}`)
         
         if (response.status === 200) {
-            navigate('/all', { replace: true })
+            navigate('/edit', { replace: true })
+            popupShow(props, "Item successfully deleted!")
+        }
+        if (response.status === 404) {
+            navigate('/edit', { replace: true })
+            popupShow(props, "Error!", 'error')
         }
     }
 

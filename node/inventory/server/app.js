@@ -30,6 +30,8 @@ app.get('/all', async (req, res) => {
     res.send(all);
 })
 
+// work on loading items
+
 app.get('/allcodes', async (req, res) => {
     const all = await Item.find({});
     const barcodes = all.map(element => element.barcode);
@@ -62,7 +64,6 @@ app.get('/delete/:barcode', async (req, res) => {
 
 })
 
-
 app.post('/add', async (req, res) => {
     const {name, image, quantity, barcode} = req.body
 
@@ -73,6 +74,7 @@ app.post('/add', async (req, res) => {
 
 app.patch('/edit/:barcode', async (req, res) => {
     const {name, image, quantity, type, amount, original} = req.body;
+    // get original value instead of getting it from the form
     const barcode = req.params.barcode;
 
     let quantityChange = ''

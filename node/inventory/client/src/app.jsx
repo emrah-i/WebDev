@@ -7,13 +7,16 @@ import AddForm from './add';
 import EditView from './editview';
 import Barcode from './barcode';
 import TableView from './tableview';
+import Popup from './popup';
 
 function Main(props) {
+  const { item, setItem, popupText, setPopupText } = props;
   return (<main>
             <div id="item-form">
-              <Search setItem={props.setItem} />
-              <Send item={props.item} setAll={props.setAll} />
+              <Search setItem={setItem} setPopupText={setPopupText} />
+              <Send item={item} setPopupText={setPopupText} />
             </div>
+            <Popup popupText={popupText} setPopupText={setPopupText} />
           </main>)
 }
 
@@ -24,15 +27,19 @@ function Add() {
 }
 
 function Edit(props) {
+  const { item, setItem, popupText, setPopupText } = props;
+
   return (<main id='edit-page'>
-            <Search setItem={props.setItem} />
-            <EditView item={props.item} />
+            <Search setItem={setItem} setPopupText={setPopupText} />
+            <EditView item={item} setPopupText={setPopupText} />
+            <Popup popupText={popupText} setPopupText={setPopupText} />
           </main>)
 }
 
-function All() {
+function All(props) {
 
   const [allDisplay, setAllDisplay] = useState([]);
+  const [searchAll, setSearchAll] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,12 +48,23 @@ function All() {
         const response = await fetch("/all");
         const data = await response.json();
         setAllDisplay(data);
+        setSearchAll(data)
       } catch (error) {
         console.error('Error fetching data:', error);
     }}
 
     fetchData()
   }, []);
+
+  // maybe just try to sort through 
+  async function changeAll(keywords) {
+    let keywordsArray = keywords.toLowerCase().trim().split(' ')
+
+    const searchItems = allDisplay.filter(item=> {
+      return keywordsArray.some(substring => item.name.toLowerCase().includes(substring));
+    })
+    setSearchAll(searchItems)
+  }
 
   function handleClick(barcodeValue, path) {
     navigate(path, { replace: true })
@@ -61,6 +79,8 @@ function All() {
 
   return (<main id="all-div">
             <h1>All Items:</h1>
+            <label>Search:</label>&nbsp;
+            <input onChange={(event)=>{changeAll(event.target.value)}} type="text" placeholder='Enter Keywords' id="all_search_input"/>
             <table className="items-display ">
               <thead>
                   <tr>
@@ -72,7 +92,7 @@ function All() {
                   </tr>
               </thead>
               <tbody>
-              {allDisplay.map((item, index) => (
+              {searchAll.map((item, index) => (
                 <tr key={item._id}>
                   <TableView order={item} /> 
                   <td><Barcode barcode={item.barcode} index={index} /></td>
@@ -84,19 +104,22 @@ function All() {
                 )}
               </tbody>
             </table>
+            <Popup popupText={props.popupText} setPopupText={props.setPopupText} />
           </main>)
 }
 function App() {
+  const [popupText, setPopupText] = useState('test');
   const [item, setItem] = useState({});
 
   return (
     <Router>
         <Nav />
         <Routes>
-          <Route exact path="/" element={<Main item={item} setItem={setItem} />} />
-          <Route exact path="/add" element={<Add />} />
-          <Route exact path="/edit" element={<Edit setItem={setItem} item={item} />} />
-          <Route exact path="/all" element={<All />} />
+          <Route exact path="/" element={<Main popupText={popupText} setPopupText={setPopupText} item={item} setItem={setItem} />} />
+          <Route exact path="/add" element={<Add popupText={popupText} setPopupText={setPopupText} />} />
+          <Route exact path="/edit" element={<Edit popupText={popupText} setPopupText={setPopupText} setItem={setItem} item={item} />} />
+          <Route exact path="/all" element={<All popupText={popupText} setPopupText={setPopupText} />} />
+          {/* load items */}
         </Routes>
     </Router>
   )
