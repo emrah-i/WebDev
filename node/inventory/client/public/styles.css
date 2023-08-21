@@ -158,6 +158,7 @@ input {
 }
 
 .listBarcodeItem {
+    width: fit-content;
     position: relative;
     cursor: pointer;
 }

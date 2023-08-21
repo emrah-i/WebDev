@@ -17,10 +17,10 @@ function ViewDisplay(props) {
     }, [])
 
     return (
-        <React.Fragment>
+        <div id='view-div'>
             <Display item={item} />
             <Barcode index={0} barcode={item.barcode} />
-        </React.Fragment>
+        </div>
         )
 }
 
