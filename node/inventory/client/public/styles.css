@@ -146,14 +146,14 @@ input {
 }
 
 .extra-btn {
-    background-color: #1A5276 !important;
+    background-color: #73C6B6 !important;
     display: none;
 }
 
 #barcodeCanvas {
     display: none;
     margin: .8rem 0 0;
-    width: 30%;
+    width: 75%;
     height: auto;
 }
 

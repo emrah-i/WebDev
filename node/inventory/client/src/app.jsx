@@ -10,11 +10,11 @@ import TableView from './tableview';
 import Popup from './popup';
 
 function Main(props) {
-  const { item, setItem, popupText, setPopupText } = props;
+  const { item, setItem, popupText, setPopupText, setSearchAll, allDisplay } = props;
   return (<main>
             <div id="item-form">
               <Search setItem={setItem} setPopupText={setPopupText} />
-              <Send item={item} setPopupText={setPopupText} />
+              <Send item={item} setSearchAll={setSearchAll} setPopupText={setPopupText} allDisplay={allDisplay} />
             </div>
             <Popup popupText={popupText} setPopupText={setPopupText} />
           </main>)
@@ -116,7 +116,7 @@ function App() {
     <Router>
         <Nav />
         <Routes>
-          <Route exact path="/" element={<Main popupText={popupText} setPopupText={setPopupText} item={item} setItem={setItem} />} />
+          <Route exact path="/" element={<Main allDisplay={allDisplay} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} item={item} setItem={setItem} />} />
           <Route exact path="/add" element={<Add popupText={popupText} setPopupText={setPopupText} />} />
           <Route exact path="/edit" element={<Edit allDisplay={allDisplay} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} setItem={setItem} item={item} />} />
           <Route exact path="/all" element={<All allDisplay={allDisplay} setAllDisplay={setAllDisplay} searchAll={searchAll} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} />} />

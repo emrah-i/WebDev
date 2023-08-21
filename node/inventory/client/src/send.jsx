@@ -4,7 +4,7 @@ import Display from './display';
 import { popupShow } from "./popup";
 
 function Send(props) {
-    const { item, setPopupText } = props;
+    const { item, setSearchAll, allDisplay } = props;
     const [error, setError] = useState('');
     const navigate = useNavigate()
 
@@ -51,8 +51,18 @@ function Send(props) {
         const response = await fetch(`/edit/${item.barcode}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(change)})
 
         if (response.status === 200) {
-            navigate('/', { replace: true })
+            navigate('/all', { replace: true })
             popupShow(props, "Item successfuly updated!")
+
+            setTimeout(()=>{
+                const inputElement = document.querySelector('#all_search_input')
+                inputElement.value = item.name;
+                let keywordsArray = item.name.toLowerCase().trim().split(' ')
+                const searchItems = allDisplay.filter(item=> {
+                return keywordsArray.some(substring => item.name.toLowerCase().includes(substring));
+                })
+                setSearchAll(searchItems)
+            }, 250)
         }
         if (response.status === 404) {
             navigate('/', { replace: true })
