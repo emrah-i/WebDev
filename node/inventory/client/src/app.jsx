@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Search from './search';
 import Send from './send';
 import Nav from './nav';
@@ -93,10 +93,9 @@ function All() {
 }
 
 function View(props) {
-  const barcode = useParams();
 
   return (<main>
-            <ViewDisplay barcode={barcode.barcode} setItem={props.setItem} item={props.item} />
+            <ViewDisplay setItem={props.setItem} item={props.item} />
           </main>)
 }
 
@@ -107,10 +106,10 @@ function App() {
     <Router>
         <Nav />
         <Routes>
-          <Route path="/" element={<Main item={item} setItem={setItem} />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/edit" element={<Edit setItem={setItem} item={item} />} />
-          <Route path="/all" element={<All />} />
+          <Route exact path="/" element={<Main item={item} setItem={setItem} />} />
+          <Route exact path="/add" element={<Add />} />
+          <Route exact path="/edit" element={<Edit setItem={setItem} item={item} />} />
+          <Route exact path="/all" element={<All />} />
           <Route path="/view/:barcode" element={<View setItem={setItem} item={item} />} />
         </Routes>
     </Router>

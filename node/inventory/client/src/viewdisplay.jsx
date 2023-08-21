@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Display from "./display";
 
 function ViewDisplay(props) {
-    const { item, setItem, barcode } = props;
+    const { barcode } = useParams();
+    const { item, setItem } = props;
 
     useEffect(()=>{
         async function getItem() {
@@ -13,11 +16,7 @@ function ViewDisplay(props) {
     }, [])
 
     return (
-        <div>
-            <h2>{item.name}</h2>
-            <p>Quantity in Stock: <span id="item-quantity">{item.quantity}</span></p>
-            <img src={item.image} alt="Search Item" width="20%" />
-        </div>
+        <Display item={item} />
         )
 }
 
