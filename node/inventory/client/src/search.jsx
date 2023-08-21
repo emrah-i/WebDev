@@ -4,15 +4,6 @@ import { popupShow } from "./popup";
 function Search(props) {
 
     const { setItem } = props;
-
-    document.addEventListener('keydown', (event)=>{
-        const search_form = document.querySelector('#search-form')
-
-        if (event.key === ' ') {
-            search_form.barcode.focus()
-        }
-    })
-
     async function searchClick(event) {
 
         event.preventDefault()

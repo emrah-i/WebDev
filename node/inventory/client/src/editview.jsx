@@ -4,7 +4,7 @@ import { popupShow } from "./popup";
 
 function EditView(props) {
     const [showModal, setShowModal] = useState(false);
-    const item = props.item
+    const { item, setSearchAll, allDisplay } = props
     const navigate = useNavigate()
 
     async function submitEdit() {
@@ -21,11 +21,16 @@ function EditView(props) {
         if (response.status === 200) {
             navigate('/all', { replace: true })
             popupShow(props, "Item successfully edited!")
+
             setTimeout(()=>{
-                const inputElement = document.querySelector('#all_search_input').value = item.name;
-                const spaceEvent = new KeyboardEvent('keydown', {key: ' '});
-                inputElement.dispatchEvent(spaceEvent);  
-            }, 200)
+                const inputElement = document.querySelector('#all_search_input')
+                inputElement.value = item.name;
+                let keywordsArray = item.name.toLowerCase().trim().split(' ')
+                const searchItems = allDisplay.filter(item=> {
+                return keywordsArray.some(substring => item.name.toLowerCase().includes(substring));
+                })
+                setSearchAll(searchItems)
+            }, 250)
             }
         if (response.status === 404) {
             navigate('/all', { replace: true })

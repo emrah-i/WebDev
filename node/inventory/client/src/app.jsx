@@ -27,19 +27,18 @@ function Add() {
 }
 
 function Edit(props) {
-  const { item, setItem, popupText, setPopupText } = props;
+  const { item, setItem, popupText, setSearchAll, setPopupText, allDisplay } = props;
 
   return (<main id='edit-page'>
             <Search setItem={setItem} setPopupText={setPopupText} />
-            <EditView item={item} setPopupText={setPopupText} />
+            <EditView item={item} setSearchAll={setSearchAll} setPopupText={setPopupText} allDisplay={allDisplay} />
             <Popup popupText={popupText} setPopupText={setPopupText} />
           </main>)
 }
 
 function All(props) {
 
-  const [allDisplay, setAllDisplay] = useState([]);
-  const [searchAll, setSearchAll] = useState([]);
+  const { searchAll, setSearchAll , allDisplay, setAllDisplay } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -109,6 +108,8 @@ function All(props) {
 }
 function App() {
   const [popupText, setPopupText] = useState('test');
+  const [ searchAll, setSearchAll ] = useState([]);
+  const [ allDisplay, setAllDisplay ] = useState([]);
   const [item, setItem] = useState({});
 
   return (
@@ -117,8 +118,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Main popupText={popupText} setPopupText={setPopupText} item={item} setItem={setItem} />} />
           <Route exact path="/add" element={<Add popupText={popupText} setPopupText={setPopupText} />} />
-          <Route exact path="/edit" element={<Edit popupText={popupText} setPopupText={setPopupText} setItem={setItem} item={item} />} />
-          <Route exact path="/all" element={<All popupText={popupText} setPopupText={setPopupText} />} />
+          <Route exact path="/edit" element={<Edit allDisplay={allDisplay} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} setItem={setItem} item={item} />} />
+          <Route exact path="/all" element={<All allDisplay={allDisplay} setAllDisplay={setAllDisplay} searchAll={searchAll} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} />} />
           {/* load items */}
         </Routes>
     </Router>
