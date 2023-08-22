@@ -95,7 +95,7 @@ function Send(props) {
                 <label>Remove Items:&nbsp;</label>
                 <p id="error">{error}</p>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="decrease" />
-                <div>
+                <div className="send-btns">
                     <button onClick={sendClick} type='button' className="btn-item" >Submit</button>
                     <button onClick={()=>window.location.reload()} type='button' className="btn-item cancel-btn" >Cancel</button>
                 </div>

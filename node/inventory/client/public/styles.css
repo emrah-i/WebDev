@@ -35,6 +35,7 @@ h1 {
 }
 
 img {
+    width: 50vw;
     border-radius: 1rem;
 }
 
@@ -92,7 +93,7 @@ main {
 }
 
 input {
-    min-width: 75%;
+    width: 50% !important;
     border-radius: 1rem;
     margin: .5rem 0;
     padding: .5rem;
@@ -157,16 +158,11 @@ input {
 #barcodeCanvas {
     display: none;
     margin: .8rem 0 0;
-    width: 75%;
     height: auto;
 }
 
 #edit-form {
     display: none;
-}
-
-#all-div {
-    width: 100%;
 }
 
 #all-div table {
@@ -175,7 +171,6 @@ input {
 
 .delete-btn {
     background-color: #E74C3CF0 !important;
-    margin-left: 1rem;
 }
 
 .modal-content {
@@ -237,18 +232,94 @@ input {
     background-color: #58D68D;
     transition: all .3s ease-in-out;
     text-align: center;
-    height: 10%;
+    width: fit-content;
+    height: fit-content;
     position: absolute;
     bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2rem;
-    width: fit-content;
-    padding: 3rem;
+    padding: 1rem 2rem;
     box-shadow: 0px 0px 1rem .5rem #00000020;
+}
+
+.edit-btns, .send-btns {
+    display: flex !important;
+    gap: 1rem;
+    justify-content: start;
+    flex-wrap: wrap;    
 }
 
 .cancel-btn {
     background-color: #73C6B6;
-    margin-left: 1rem;
+}
+
+#toggle-btn {
+    border: .2rem solid white;
+    padding: auto
+}
+
+#toggle-btn:focus {
+    outline: 0 !important;
+    box-shadow: 0px 0px 1rem .5rem #00000020;
+}
+
+#toggle-btn svg {
+    padding-bottom: .1rem;
+    font-size: 1.75rem;
+    fill: white;
+}
+
+@media (min-width: 1200px) {
+    img {
+        width: 15vw;
+    }
+    canvas {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    img {
+        width: 30vw;
+    }
+    canvas {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+    img {
+        width: 40vw;
+    }
+    input {
+        width: 75% !important;
+    }
+    canvas {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 13px;
+    }
+    img {
+        width: 40vw;
+    }
+    input {
+        width: 80% !important;
+    }
+    canvas {
+        width: 50vw;
+    }
 }

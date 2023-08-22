@@ -70,7 +70,7 @@ function EditView(props) {
             <label>Image:</label>
             <img src={item.image} alt="Search Item" width="20%" />
             <input type="text" placeholder="Enter Source" name="image" defaultValue={item.image} required />
-            <div>
+            <div className="edit-btns">
                 <button onClick={submitEdit} type="button" className="btn-item">Submit Edit</button>
                 <button onClick={handleShowModal} type="button" className="btn-item delete-btn">Delete</button>
                 <button onClick={()=>window.location.reload()} type='button' className="btn-item cancel-btn" >Cancel</button>

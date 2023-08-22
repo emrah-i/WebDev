@@ -6,14 +6,11 @@ import All from './all';
 import Nav from './nav';
 import AddForm from './add';
 import EditView from './editview';
-import Barcode from './barcode';
-import TableView from './tableview';
 import Popup from './popup';
-import TableHead from './tablehead';
 
 function Main(props) {
   const { item, setItem, popupText, setPopupText, setSearchAll, allDisplay } = props;
-  return (<main>
+  return (<main className='col'>
             <div id="item-form">
               <Search setItem={setItem} setPopupText={setPopupText} />
               <Send item={item} setSearchAll={setSearchAll} setPopupText={setPopupText} allDisplay={allDisplay} />
@@ -23,7 +20,7 @@ function Main(props) {
 }
 
 function Add() {
-  return (<main>
+  return (<main className='col'>
             <AddForm />
           </main>)
 }
@@ -31,7 +28,7 @@ function Add() {
 function Edit(props) {
   const { item, setItem, popupText, setSearchAll, setPopupText, allDisplay } = props;
 
-  return (<main id='edit-page'>
+  return (<main className='col' id='edit-page'>
             <Search setItem={setItem} setPopupText={setPopupText} />
             <EditView item={item} setSearchAll={setSearchAll} setPopupText={setPopupText} allDisplay={allDisplay} />
             <Popup popupText={popupText} setPopupText={setPopupText} />
@@ -39,10 +36,11 @@ function Edit(props) {
 }
 
 function AllDisplay(props) {
-  return (<main id="all-div">
+  return (<main className='col-12' id="all-div">
             <All props={props} />
           </main>)
 }
+
 function App() {
   const [popupText, setPopupText] = useState('test');
   const [ searchAll, setSearchAll ] = useState([]);

@@ -77,10 +77,9 @@ function AddForm() {
 
         const add_form = document.querySelector("#add-form")
 
+        document.querySelector('.gen-btn').style.display = 'none';
         add_form.barcode.value = genBarcode;
         add_form.add_btn.style.display = "block";
-        event.target.style.display = 'none';
-
     }
 
     function downloadBarcode() {
@@ -112,7 +111,7 @@ function AddForm() {
                 <label>Quantity:</label>
                 <input type="text" placeholder="Enter Quantity" name="quantity" required />
                 <canvas id="barcodeCanvas"></canvas>
-                <button onClick={calculateBarcode} className="btn-item" type="button">Generate Barcode</button>
+                <button onClick={calculateBarcode} className="btn-item gen-btn" type="button">Generate Barcode</button>
                 <button className="btn-item" type="submit" id="add_btn" name="add_btn">Add Item</button>
                 <BarcodeOptions downloadBarcode={downloadBarcode} copyBarcode={copyBarcode} />
             </form>)
