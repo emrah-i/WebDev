@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './search';
 import Send from './send';
 import All from './all';
@@ -36,7 +36,7 @@ function Edit(props) {
 }
 
 function AllDisplay(props) {
-  return (<main className='col-12' id="all-div">
+  return (<main className='all-display col' id="all-div">
             <All props={props} />
           </main>)
 }

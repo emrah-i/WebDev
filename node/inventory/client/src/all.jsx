@@ -6,7 +6,6 @@ import Barcode from "./barcode";
 import Popup from "./popup";
 
 function All(props) {
-
     const { searchAll, setSearchAll , allDisplay, setAllDisplay } = props.props;
     const navigate = useNavigate();
   
@@ -22,7 +21,7 @@ function All(props) {
       }}
   
       fetchData()
-    }, []);
+    }, [setAllDisplay, setSearchAll]);
   
     async function changeAll(keywords) {
       let keywordsArray = keywords.toLowerCase().trim().split(' ')
@@ -46,22 +45,24 @@ function All(props) {
 
     return (<React.Fragment>
                 <h1>All Items:</h1>
-                <label>Search:</label>&nbsp;
-                <input onChange={(event)=>{changeAll(event.target.value)}} type="text" placeholder='Enter Keywords' id="all_search_input"/>
-                <table className="items-display ">
-                <TableHead />
-                <tbody>
-                {searchAll.map((item, index) => (
-                    <tr key={item._id}>
-                    <TableView order={item} /> 
-                    <td><Barcode barcode={item.barcode} index={index} /></td>
-                    <td>
-                        <button onClick={()=>{handleClick(item.barcode, '/')}} className="btn-item">Change Quantity</button><br/><p></p>
-                        <button onClick={()=>{handleClick(item.barcode, '/edit')}} className="btn-item change-btn">Edit Item</button>
-                    </td>
-                    </tr>)
-                    )}
-                </tbody>
+                <div>
+                  <label>Search:</label>&nbsp;
+                  <input onChange={(event)=>{changeAll(event.target.value)}} type="text" placeholder='Enter Keywords' id="all_search_input"/>
+                </div>
+                <table className="items-display">
+                  <TableHead />
+                  <tbody>
+                  {searchAll.map((item, index) => (
+                      <tr key={item._id}>
+                      <TableView order={item} /> 
+                      <td><Barcode barcode={item.barcode} index={index} /></td>
+                      <td>
+                          <button onClick={()=>{handleClick(item.barcode, '/')}} className="btn-item">Change Quantity</button><br/><p></p>
+                          <button onClick={()=>{handleClick(item.barcode, '/edit')}} className="btn-item change-btn">Edit Item</button>
+                      </td>
+                      </tr>)
+                      )}
+                  </tbody>
                 </table>
                 <Popup popupText={props.popupText} setPopupText={props.setPopupText} />
             </React.Fragment>)

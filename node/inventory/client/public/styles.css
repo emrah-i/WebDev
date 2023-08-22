@@ -21,6 +21,7 @@ nav {
     justify-self: start !important;
     top: 0;
     left: 0;
+    z-index: 999;
     width: 100%;
     background-color: #58D68D;
     box-shadow: 0px 0px 1rem .5rem #00000030;
@@ -109,12 +110,11 @@ input {
 }
 
 .items-display {
-    display: none;
     background-color: white;
     color: black !important;
     border-radius: 1rem;
+    overflow: hidden;
     padding: 5rem;
-    min-width: 100% !important;
     height: fit-content;;
     text-align: center;
 }
@@ -145,6 +145,17 @@ input {
     margin: auto !important;
 }
 
+.all-display {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 0;
+    width: 100%;
+    height: fit-content;
+    margin: 10vh 0;
+}
+
 #add-form {
     display: flex;
     flex-direction: column;
@@ -163,10 +174,6 @@ input {
 
 #edit-form {
     display: none;
-}
-
-#all-div table {
-    display: table !important;
 }
 
 .delete-btn {
@@ -271,6 +278,9 @@ input {
 }
 
 @media (min-width: 1200px) {
+    .items-display .btn-item {
+        font-size: 1.4rem;
+    }
     img {
         width: 15vw;
     }
@@ -280,6 +290,15 @@ input {
 }
 
 @media (max-width: 1200px) {
+    .items-display img {
+        width: 15vw;
+    }
+    .items-display canvas {
+        width: 15vw;
+    }
+    .items-display .btn-item {
+        font-size: 1.2rem;
+    }
     img {
         width: 30vw;
     }
@@ -289,12 +308,33 @@ input {
 }
 
 @media (max-width: 992px) {
+    .all-display {
+        font-size: 1.3rem !important;
+    }
+    .items-display .btn-item {
+        font-size: 1.2rem;
+    }
+    .items-display th:nth-child(1) {
+        display: none;
+    }
+    .items-display td:nth-child(1) {
+        display: none;
+    }
+    .items-display canvas {
+        width: 20vw;
+    }
     html {
         font-size: 14px;
     }
 }
 
 @media (max-width: 768px) {
+    .items-display th:nth-child(4) {
+        display: none;
+    }
+    .items-display td:nth-child(4) {
+        display: none;
+    }
     html {
         font-size: 13px;
     }
@@ -310,8 +350,13 @@ input {
 }
 
 @media (max-width: 576px) {
+    .all-display {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        font-size: 1.5rem !important;
+    }
     html {
-        font-size: 13px;
+        font-size: 12px;
     }
     img {
         width: 40vw;
