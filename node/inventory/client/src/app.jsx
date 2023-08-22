@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Search from './search';
 import Send from './send';
+import All from './all';
 import Nav from './nav';
 import AddForm from './add';
 import EditView from './editview';
 import Barcode from './barcode';
 import TableView from './tableview';
 import Popup from './popup';
+import TableHead from './tablehead';
 
 function Main(props) {
   const { item, setItem, popupText, setPopupText, setSearchAll, allDisplay } = props;
@@ -36,74 +38,9 @@ function Edit(props) {
           </main>)
 }
 
-function All(props) {
-
-  const { searchAll, setSearchAll , allDisplay, setAllDisplay } = props;
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("/all");
-        const data = await response.json();
-        setAllDisplay(data);
-        setSearchAll(data)
-      } catch (error) {
-        console.error('Error fetching data:', error);
-    }}
-
-    fetchData()
-  }, []);
-
-  // maybe just try to sort through 
-  async function changeAll(keywords) {
-    let keywordsArray = keywords.toLowerCase().trim().split(' ')
-
-    const searchItems = allDisplay.filter(item=> {
-      return keywordsArray.some(substring => item.name.toLowerCase().includes(substring));
-    })
-    setSearchAll(searchItems)
-  }
-
-  function handleClick(barcodeValue, path) {
-    navigate(path, { replace: true })
-
-    setTimeout(()=>{
-      const search_form = document.querySelector('#search-form');
-      
-      search_form.barcode.value = barcodeValue;
-      search_form.search_submit.click()
-    }, 250)
-  }
-
+function AllDisplay(props) {
   return (<main id="all-div">
-            <h1>All Items:</h1>
-            <label>Search:</label>&nbsp;
-            <input onChange={(event)=>{changeAll(event.target.value)}} type="text" placeholder='Enter Keywords' id="all_search_input"/>
-            <table className="items-display ">
-              <thead>
-                  <tr>
-                      <th>Image</th>
-                      <th>Name</th>
-                      <th>Quantity</th>
-                      <th>Barcode</th>
-                      <th>View</th>
-                  </tr>
-              </thead>
-              <tbody>
-              {searchAll.map((item, index) => (
-                <tr key={item._id}>
-                  <TableView order={item} /> 
-                  <td><Barcode barcode={item.barcode} index={index} /></td>
-                  <td>
-                    <button onClick={()=>{handleClick(item.barcode, '/')}} className="btn-item">Change Quantity</button><br/><p></p>
-                    <button onClick={()=>{handleClick(item.barcode, '/edit')}} className="btn-item change-btn">Edit Item</button>
-                  </td>
-                </tr>)
-                )}
-              </tbody>
-            </table>
-            <Popup popupText={props.popupText} setPopupText={props.setPopupText} />
+            <All props={props} />
           </main>)
 }
 function App() {
@@ -119,7 +56,7 @@ function App() {
           <Route exact path="/" element={<Main allDisplay={allDisplay} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} item={item} setItem={setItem} />} />
           <Route exact path="/add" element={<Add popupText={popupText} setPopupText={setPopupText} />} />
           <Route exact path="/edit" element={<Edit allDisplay={allDisplay} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} setItem={setItem} item={item} />} />
-          <Route exact path="/all" element={<All allDisplay={allDisplay} setAllDisplay={setAllDisplay} searchAll={searchAll} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} />} />
+          <Route exact path="/all" element={<AllDisplay allDisplay={allDisplay} setAllDisplay={setAllDisplay} searchAll={searchAll} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} />} />
           {/* load items */}
         </Routes>
     </Router>

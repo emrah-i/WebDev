@@ -11,6 +11,9 @@ function popupShow(props, phrase, option = "normal") {
     else if (option === 'error') {
         popup.style.backgroundColor = "#E74C3CF0";
     }
+    else if (option === 'info') {
+        popup.style.backgroundColor = "#73C6B6";
+    }
 
     setTimeout(()=>{
         popup.style.opacity = '1';

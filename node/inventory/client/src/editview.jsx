@@ -6,7 +6,7 @@ function EditView(props) {
     const [showModal, setShowModal] = useState(false);
     const { item, setSearchAll, allDisplay } = props
     const navigate = useNavigate()
-
+    
     async function submitEdit() {
         const edit_form = document.querySelector('#edit-form')
 
@@ -70,8 +70,11 @@ function EditView(props) {
             <label>Image:</label>
             <img src={item.image} alt="Search Item" width="20%" />
             <input type="text" placeholder="Enter Source" name="image" defaultValue={item.image} required />
-            <button onClick={submitEdit} type="button" className="btn-item">Edit</button>
-            <button onClick={handleShowModal} type="button" className="btn-item delete-btn">Delete</button>
+            <div>
+                <button onClick={submitEdit} type="button" className="btn-item">Submit Edit</button>
+                <button onClick={handleShowModal} type="button" className="btn-item delete-btn">Delete</button>
+                <button onClick={()=>window.location.reload()} type='button' className="btn-item cancel-btn" >Cancel</button>
+            </div>
 
             {showModal && (
             <div className="modal">

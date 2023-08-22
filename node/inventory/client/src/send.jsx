@@ -14,14 +14,13 @@ function Send(props) {
         const search_form = document.querySelector('#search-form');
         const increase = send_form.increase.value;
         const decrease = send_form.decrease.value;
-        var change = {
-            original: send_form.original.value
-        }
+        var change = {}
 
         setError('');
         document.querySelector('#error').style.display = 'none';
 
         if (increase === '' && decrease === ''){
+            popupShow(props, "You need to enter a value.", 'info')
             return
         }
         else if (increase !== '' && decrease !== ''){
@@ -62,7 +61,7 @@ function Send(props) {
                 return keywordsArray.some(substring => item.name.toLowerCase().includes(substring));
                 })
                 setSearchAll(searchItems)
-            }, 250)
+            }, 500)
         }
         if (response.status === 404) {
             navigate('/', { replace: true })
@@ -91,13 +90,15 @@ function Send(props) {
             <form id="send-form">
                 <h1>Search Result:</h1>
                 <Display id="item_display" item={item} />
-                <input type="hidden" defaultValue={item.quantity} name="original" />
                 <label>Add Items:&nbsp;</label>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="increase" />
                 <label>Remove Items:&nbsp;</label>
                 <p id="error">{error}</p>
                 <input onChange={inputChange} placeholder="Enter Quantity" min="0" type="number" step="1" name="decrease" />
-                <button onClick={sendClick} type='button' className="btn-item" >Submit</button>
+                <div>
+                    <button onClick={sendClick} type='button' className="btn-item" >Submit</button>
+                    <button onClick={()=>window.location.reload()} type='button' className="btn-item cancel-btn" >Cancel</button>
+                </div>
             </form>
           )}
 

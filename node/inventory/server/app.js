@@ -73,31 +73,37 @@ app.post('/add', async (req, res) => {
 });
 
 app.patch('/edit/:barcode', async (req, res) => {
-    const {name, image, quantity, type, amount, original} = req.body;
-    // get original value instead of getting it from the form
+    const {name, image, quantity, type, amount} = req.body;
     const barcode = req.params.barcode;
+
+    const item = await Item.find({ barcode: barcode })
+    const original = item[0].quantity
 
     let quantityChange = ''
 
     if (type !== undefined) {
 
-        const intOriginal = parseInt(original)
         const intAmount = parseInt(amount)
 
         if (type === 'increase') {
 
             quantityChange = {
-                quantity: (intOriginal + intAmount)
+                quantity: (original + intAmount)
             }
         }
         else {
             quantityChange = {
-                quantity: (intOriginal - intAmount)
+                quantity: (original - intAmount)
             };
         }
 
-        await Item.findOneAndUpdate({ barcode: barcode }, quantityChange, { new: true });
-        res.status(200).send("Success");
+        try {
+            await Item.findOneAndUpdate({ barcode: barcode }, quantityChange, { new: true });
+            res.status(200).send('Success');
+        }
+        catch {
+            res.status(404).send('Error');
+        }
     }
     else {
         const updatedItem = {
@@ -106,8 +112,13 @@ app.patch('/edit/:barcode', async (req, res) => {
             quantity: quantity,
         };
 
-        await Item.findOneAndUpdate({ barcode: barcode }, updatedItem, { new: true });
-        res.status(200).send('Success');
+        try {
+            await Item.findOneAndUpdate({ barcode: barcode }, updatedItem, { new: true });
+            res.status(200).send('Success');
+        }
+        catch {
+            res.status(404).send('Error');
+        }
     }
 }) 
 
