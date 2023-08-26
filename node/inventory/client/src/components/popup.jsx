@@ -16,11 +16,11 @@ function popupShow(props, phrase, option = "normal") {
     }
 
     setTimeout(()=>{
-        popup.style.opacity = '1';
+        popup.style.display = 'flex';
     }, 250)
 
     setTimeout(()=>{
-        popup.style.opacity = '0';
+        popup.style.display = 'none';
     }, 3000)
 }
 

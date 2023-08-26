@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-import TableHead from "./tablehead";
-import TableView from './tableview';
-import Barcode from "./barcode";
-import Popup from "./popup";
+import TableHead from "./components/tablehead";
+import TableView from './components/tableview';
+import Barcode from "./components/barcode";
+import Popup from "./components/popup";
 
 function All(props) {
     const { searchAll, setSearchAll , allDisplay, setAllDisplay } = props.props;
     const navigate = useNavigate();
-  
+
     useEffect(() => {
       async function fetchData() {
         try {

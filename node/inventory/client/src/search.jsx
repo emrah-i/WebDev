@@ -1,5 +1,5 @@
 import React from "react";
-import { popupShow } from "./popup";
+import { popupShow } from "./components/popup";
 
 function Search(props) {
 

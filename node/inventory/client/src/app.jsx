@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Search from './search';
 import Send from './send';
 import All from './all';
-import Nav from './nav';
+import Nav from './components/nav';
 import AddForm from './add';
 import EditView from './editview';
-import Popup from './popup';
+import Popup from './components/popup';
 
 function Main(props) {
   const { item, setItem, popupText, setPopupText, setSearchAll, allDisplay } = props;
@@ -55,7 +55,6 @@ function App() {
           <Route exact path="/add" element={<Add popupText={popupText} setPopupText={setPopupText} />} />
           <Route exact path="/edit" element={<Edit allDisplay={allDisplay} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} setItem={setItem} item={item} />} />
           <Route exact path="/all" element={<AllDisplay allDisplay={allDisplay} setAllDisplay={setAllDisplay} searchAll={searchAll} setSearchAll={setSearchAll} popupText={popupText} setPopupText={setPopupText} />} />
-          {/* load items */}
         </Routes>
     </Router>
   )

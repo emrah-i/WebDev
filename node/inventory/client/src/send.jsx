@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Display from './display';
-import { popupShow } from "./popup";
+import Display from './components/display';
+import { popupShow } from "./components/popup";
 
 function Send(props) {
     const { item, setSearchAll, allDisplay } = props;

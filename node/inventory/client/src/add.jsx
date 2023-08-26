@@ -1,5 +1,5 @@
 import React from "react";
-import BarcodeOptions from "./barcode_options";
+import BarcodeOptions from "./components/barcode_options";
 import JsBarcode from "jsbarcode";
 
 function AddForm() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { popupShow } from "./popup";
+import { popupShow } from "./components/popup";
 
 function EditView(props) {
     const [showModal, setShowModal] = useState(false);
