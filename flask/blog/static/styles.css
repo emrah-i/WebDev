@@ -12,6 +12,18 @@ body {
     color: black;
 }
 
+button.navbar-toggler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .2rem solid black;
+    padding-bottom: .3rem;
+}
+
+button.navbar-toggler:focus {
+    box-shadow: 0px 0px .2rem .2rem #00000020;
+}
+
 #album {
     background-color: white;
     color: black;
@@ -27,6 +39,10 @@ body {
     border: 2px solid black;
     border-radius: 50px;
     font-size: 1.2rem;
+}
+
+.btn:hover {
+    cursor: pointer;
 }
 
 .btn:hover, .btn:focus {
@@ -91,11 +107,21 @@ body {
     font-size: 1.1rem;
 }
 
+.main_posts_text {
+    transition: all .1s ease-in-out;
+}
+
 .main_posts_text:hover {
+    cursor: pointer;
     color: gray;
 }
 
+.all_posts_container {
+    transition: all .2s ease-in-out;
+}
+
 .all_posts_container:hover {
+    cursor: pointer;
     box-shadow: 0px 0px 15px gray;
 }
 
@@ -135,6 +161,10 @@ body {
     text-align: left; 
 }
 
+.login {
+    margin-bottom: 40%;
+}
+
 @media (min-width: 992px) {
     .btn {
         padding: 6px 12px;
@@ -160,6 +190,12 @@ body {
 }
 
 @media (max-width: 768px) {
+    #main_img_div h1 {
+        font-size: 3rem;
+    }
+    #main_img_div p {
+        font-size: 1.5rem;
+    }
     .card-text {
         min-height: 0rem
     }

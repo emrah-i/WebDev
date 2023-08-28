@@ -5,8 +5,8 @@ Login
 {% endblock %}
 
 {% block body %}
-<div class="container d-flex justify-content-center align-items-center mt-5" style="margin-bottom: 25%;">
-    <div class="col-3 justify-content-center align-items-center" style="text-align: left; font-size: 1.1rem;">
+<div class="container d-flex justify-content-center align-items-center my-5">
+    <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-11 justify-content-center align-items-center login">
         <form action="/login" method="post">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <h2 class="mb-3"><b>Login:</b></h2>
