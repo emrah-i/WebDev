@@ -2,12 +2,12 @@ from flask import render_template, request, redirect
 from models import Movies, db, app
 import requests
 
-app.config['SECRET_KEY'] = 'ilovecats'
+app.config['SECRET_KEY'] = ''
 
 with app.app_context():
     db.create_all()
 
-code = 'ilovecats'
+code = ''
 
 @app.route('/')
 def main():
@@ -48,7 +48,7 @@ def add(id):
     url = f"https://api.themoviedb.org/3/movie/{id}"
     headers = {
         "accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZmY3NWFhZWZjN2JhNTcyOTU1Y2NlNzIyODQ0NThhZiIsInN1YiI6IjY0YjFlY2VhZTBjYTdmMDBhZTc0ZTAxZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6p5_kLqkcX9uYw_-6aNdAOSI9a5vxAEpu0S84JPZU98"
+        "Authorization": ""
     }
     response = requests.get(url, headers=headers)
     movie = response.json()
