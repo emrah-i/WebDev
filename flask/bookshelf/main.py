@@ -145,8 +145,8 @@ def unread():
 
 @app.route('/rec', methods=['GET', 'POST'])
 def rec():
-    my_email = 'emrakhibragimov5@gmail.com'
-    password = 'rgbzaerhvevmdoou'
+    my_email = ''
+    password = ''
 
     rec = RecommendBook()
     if request.method == 'POST':
