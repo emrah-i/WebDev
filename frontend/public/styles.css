@@ -1,19 +1,31 @@
+:root {
+  --main-color: white;
+  --m-opp: #212529;
+  --sec-color: #2fac61;
+  --third-color: #2d8c7f;
+}
+
 body {
   font-size: 1.5rem !important;
-  color: white;
+  color: var(--main-color);
+  font-family: "Ubuntu", sans-serif;
 }
 
 .navbar {
-  margin: auto 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--m-opp);
 }
 .navbar > div {
   padding: 0;
+}
+.navbar .navbar-brand {
+  color: var(--main-color);
 }
 .navbar .nav-item {
   margin-left: 1rem;
 }
 .navbar .nav-item a {
-  color: black;
+  color: var(--main-color);
   text-decoration: none;
 }
 .navbar .nav-item a:hover {
@@ -40,29 +52,120 @@ body {
 }
 
 .homepage {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  background-image: linear-gradient(to bottom, #60cc8c, #3c8a5d);
+  padding: 0;
+  background-color: var(--sec-color);
 }
-.homepage svg {
-  fill: black;
-  height: 2rem;
-  margin-top: 1rem;
+.homepage .sidebar {
+  width: 280px;
+}
+.homepage .sidebar hr {
+  opacity: 1;
 }
 .homepage h2 {
   padding: 0;
   text-align: left;
   margin-top: 1rem;
 }
+.homepage i {
+  font-size: 2rem;
+}
+.homepage .row:first-child {
+  margin-top: 2rem;
+}
 .homepage .row {
   justify-content: space-between;
   gap: 2rem;
-  margin: 3rem 1rem;
+  margin: 2rem 1rem;
 }
 .homepage .home-col {
-  background-color: white;
+  background-color: var(--main-color);
   flex-grow: 1;
-  color: black;
+  color: var(--m-opp);
+  padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1254901961);
+}
+.homepage .home-col .progress {
+  margin-top: 0.5rem;
+  height: 1.25rem;
+  border-radius: 1rem;
+}
+.homepage .home-col .progress div {
+  background-color: #d81a1a;
+}
+.homepage .home-col .btn {
+  margin-top: 1rem;
+}
+.homepage .empty-col {
+  flex-grow: 1;
+}
+.homepage .btn {
+  background-color: var(--third-color);
+}
+.homepage .btn:hover {
+  background-color: #32736a;
+}
+.homepage h1 {
+  color: var(--main-color);
+  border-radius: 1rem;
+  margin: 2rem 1rem 0;
+}
+.homepage hr {
+  color: none;
+  border: 0.1rem solid var(--main-color);
+  border-radius: 1rem;
+  opacity: 1;
+  margin: 1rem;
+}
+.homepage .todo-list, .homepage .flashcards {
+  background-color: var(--main-color);
+  color: var(--m-opp);
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1254901961);
+}
+.homepage .todo-list ul {
+  list-style: none;
+}
+.homepage .todo-list input {
+  border: 2px solid rgba(0, 0, 0, 0.1254901961);
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem;
+}
+.homepage .todo-list form {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.homepage .todo-list .btn {
+  display: inline;
+  margin-left: 0.5rem;
+  margin-bottom: 0;
+}
+.homepage .flashcards .btn {
+  display: inline;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  transition: all 0.25s ease-in-out;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+}
+.btn i {
+  margin: auto 0 auto 0.5rem;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: var(--main-color);
+  border-radius: 1rem;
 }/*# sourceMappingURL=styles.css.map */
