@@ -1,0 +1,11 @@
+body {
+  color: white;
+}
+
+.center-screen {
+  height: 40rem;
+  width: 100%;
+  background-image: linear-gradient(to bottom left, #60cc8c, #4ca370);
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+}/*# sourceMappingURL=styles.css.map */
