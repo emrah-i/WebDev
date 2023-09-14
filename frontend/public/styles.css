@@ -1,11 +1,68 @@
 body {
+  font-size: 1.5rem !important;
   color: white;
 }
 
+.navbar {
+  margin: auto 1rem;
+}
+.navbar > div {
+  padding: 0;
+}
+.navbar .nav-item {
+  margin-left: 1rem;
+}
+.navbar .nav-item a {
+  color: black;
+  text-decoration: none;
+}
+.navbar .nav-item a:hover {
+  text-decoration: underline !important;
+}
+
 .center-screen {
-  height: 40rem;
+  margin: auto 1rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.center-screen .cs-main {
+  background-image: linear-gradient(to bottom left, #60cc8c, #3c8a5d);
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+.center-screen .cs-sec {
+  background-color: rgb(93, 92, 92);
+  height: 100%;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.homepage {
+  height: 100vh;
   width: 100%;
-  background-image: linear-gradient(to bottom left, #60cc8c, #4ca370);
-  margin: 0 1rem;
-  border-radius: 0.5rem;
+  background-image: linear-gradient(to bottom, #60cc8c, #3c8a5d);
+}
+.homepage svg {
+  fill: black;
+  height: 2rem;
+  margin-top: 1rem;
+}
+.homepage h2 {
+  padding: 0;
+  text-align: left;
+  margin-top: 1rem;
+}
+.homepage .row {
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 3rem 1rem;
+}
+.homepage .home-col {
+  background-color: white;
+  flex-grow: 1;
+  color: black;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1254901961);
 }/*# sourceMappingURL=styles.css.map */
