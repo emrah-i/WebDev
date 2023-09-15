@@ -13,6 +13,7 @@ function Main(props) {
                   <button className="btn btn-primary btn-lg" type="button">Register</button>
                 </div>
               </div>
+              <p>I simply belive that every road you walk on was paved by someone before you. Therefore, if you don't pay that favor back, you're hurting society.</p>
 
               <div className="row align-items-md-stretch">
                 <div className="col-md-6">
@@ -135,12 +136,20 @@ function Home(props) {
             </main>)
 }
 
+function Subject() {
+    return (<main>
+
+            </main>)
+}
+
 function App() {
   
     return (
       <Router>
           <Routes>
             <Route exact path="/" element={<Main/>} />
+            <Route exact path="/home" element={<Home/>} />
+            <Route exact path="/subject/:subject" element={<Subject/>} />
             <Route exact path="/home" element={<Home/>} />
           </Routes>
       </Router>
