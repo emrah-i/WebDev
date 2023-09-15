@@ -35,7 +35,7 @@ function Main(props) {
 }
 
 function Home(props) {
-    return (<main className="container-fluid d-flex homepage">
+    return (<main className="container-fluid homepage">
               <SideNav/>
               <div>
                 <h1>Personal</h1>
