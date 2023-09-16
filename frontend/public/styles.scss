@@ -84,15 +84,19 @@ main {
         padding-top: 1rem;
     }
 
-    a.active {
-        background-color: var(--sec-color) !important;
-    }
-
     .navbar-brand {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
+
+        :hover {
+            color: var(--sec-color);
+
+            span {
+                text-decoration: underline;
+            }
+        }
     }
 
     i {
@@ -100,6 +104,7 @@ main {
     }
 
     .nav-item {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -120,14 +125,19 @@ main {
         }
 
         a:hover {
-            text-decoration: underline !important;
+            color: var(--sec-color);
+        }
+
+        .text-tip {
+            pointer-events: none;
+            display: none;
         }
     }
 
     .sidebar-toggle {
         color: white;
-        top: 8%;
-        right: -12%;
+        top: 7.5%;
+        right: -10%;
         background-color: var(--m-opp);
         display: flex;
         justify-content: center;
@@ -135,12 +145,17 @@ main {
         border-radius: 0 1rem 1rem 0;
         border: 3px solid white;
         border-left: 0;
-        width: 3rem;
-        height: 3rem;
+        width: 2.75rem;
+        height: 2.75rem;
         position: absolute;
 
         i {
-            transition: all .3s ease-in-out .2s;
+            font-size: 1.75rem;
+            transition: all .3s ease .2s;
+        }
+
+        :hover i {
+            color: var(--sec-color) !important;
         }
     }
 
@@ -164,19 +179,11 @@ main {
     }
 
     i {
-        margin-right: 4rem;
+        margin-right: 5rem;
     }
 
     img {
         margin-right: 4rem;
-    }
-
-    a.active {
-        background-color: transparent !important;
-
-        i {
-            color: var(--sec-color);
-        }
     }
 
     .navbar-brand {
@@ -184,6 +191,10 @@ main {
         justify-content: left;
         margin-left: .75rem;
         padding-bottom: .5rem;
+
+        :hover i {
+            color: var(--sec-color);
+        }
     }
 
     .dropdown > a {
@@ -198,16 +209,42 @@ main {
             margin-right: 5rem;
         }
 
+        :hover i {
+            color: var(--sec-color)
+        }
+
         a {
+            width: 100%;
             padding: .85rem;
             text-decoration: none;
             justify-content: left;
         }
+
+        a:hover {
+            text-decoration: none;
+        }
+    }
+
+    .text-tip {
+        color: white;
+        font-size: 1.1rem;
+        position: fixed;
+        transform: translateX(100%);
+        background-color: #000000AE;
+        padding: .5rem;
+        width: fit-content;
+        border-radius: 1rem;
+        display: block;
+        transition: all .3s ease .1s;
+    }
+
+    :hover .text-tip {
+        opacity: 1;
     }
 
     .sidebar-toggle {
         border: 0;
-        right: -48%;
+        right: -60%;
         top: 0%;
 
         i {
@@ -363,23 +400,74 @@ main {
       
     .accordion-item {
         border-radius: 1rem;
+        border: none;
         overflow: hidden;
     }
     
     .accordion-header {
-        padding: 10px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         cursor: pointer;
         background-color: #f0f0f0;
+    
+        h2 {
+            pointer-events: none;
+            margin: 0;
+        }
     }
     
     .accordion-content {
-        height: 0;
-        padding: 10px;
-        transition: height .3s linear;
+        max-height: 0;
+        padding: 0;
+        transition: all .4s ease;
+        border-top: 2px solid #00000020;
+
+        .accordion-btns {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            padding: 1rem;
+            text-align: left;
+            border: none;
+            background-color: transparent;
+            border-bottom: 2px solid #00000020;
+
+            button {
+                background-color: transparent;
+                border: 0;
+                height: 100%;
+            }
+    
+            .button-title {
+                text-align: left;
+                width: 100%;
+            }
+
+            .accordion-check {
+                pointer-events: none;
+            }
+
+        }
+
+        .done_section {
+            background-color: #2fac6180;
+        }
     }
 
     .accordion-content.active {
-        height: 4rem;
+        max-height: 15rem;
+    }
+
+    .accordion-chevron {
+        transition: all .3s ease;
+    }
+
+    .accordion-chevron.active {
+        transform: rotate(180deg);
     }
 }
 

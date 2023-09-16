@@ -74,67 +74,67 @@ function Home(props) {
             </div>
             <div className='row row-cols-lg-4 row-cols-md-3 row-cols-2'>
               <div className='col home-col'>
-                <i class="fa-solid fa-dna"></i>                  
+                <i className="fa-solid fa-dna"></i>                  
                 <h2>Biology</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col home-col'>
-                <i class="fa-solid fa-atom"></i>                  
+                <i className="fa-solid fa-atom"></i>                  
                 <h2>General Chemistry</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col home-col'>
-                <i class="fa-solid fa-flask"></i>                  
+                <i className="fa-solid fa-flask"></i>                  
                 <h2>Organic Chemistry</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col home-col'>
-                <i class="fa-solid fa-arrows-up-down-left-right"></i>                  
+                <i className="fa-solid fa-arrows-up-down-left-right"></i>                  
                 <h2>Physics</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col home-col'>
-                <i class="fa-solid fa-book"></i>                  
+                <i className="fa-solid fa-book"></i>                  
                 <h2>Reading Comprehension</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col home-col'>
-                <i class="fa-solid fa-calculator"></i>                  
+                <i className="fa-solid fa-calculator"></i>                  
                 <h2>Quantitative Reasoning</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col home-col'>
-                <i class="fa-solid fa-eye"></i>                  
+                <i className="fa-solid fa-eye"></i>                  
                 <h2>Perceptual Ability</h2>
                 <label>Progress:</label><br/>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button className='btn'>Go to Module <i class="fa-solid fa-chevron-right"></i></button>
+                <button className='btn'>Go to Module <i className="fa-solid fa-chevron-right"></i></button>
               </div>
               <div className='col empty-col'>
               </div>
@@ -157,21 +157,47 @@ function Subject(props) {
       }
     }, [props.sidebarOpen]);
 
-    function toggleAccordion(sectionNumber) {
+    function toggleAccordion(sectionNumber, event) {
       const contentId = "content" + sectionNumber;
-      const content = document.getElementById(contentId);
-      content.classList.toggle('active')
+      document.getElementById(contentId).classList.toggle('active');
+      event.target.querySelector('.accordion-chevron').classList.toggle('active')
+    }
+
+    const toggleList = ['fa-circle', 'fa-solid', 'fa-regular', 'fa-circle-check']
+
+    function changeCheck(event) {
+      const hover_element = event.target
+      const icon = hover_element.querySelector('i')
+      toggleList.forEach(element=> {
+        icon.classList.toggle(element)
+      })
+    }
+
+    function checkSection(event) {
+      event.target.closest('.accordion-btns').classList.toggle('done_section')
+      const icon = event.target.querySelector('i')
+      toggleList.forEach(element=> {
+        icon.classList.toggle(element)
+      })
     }
 
     return (<main className='container-fluid subject'>
               <h1>{subject}</h1>
-              <div class="accordion">
-                <div class="accordion-item">
-                  <div class="accordion-header" onClick={()=>{toggleAccordion(1)}}>
-                    Section 1
+              <div className="accordion">
+                <div className="accordion-item">
+                  <div className="accordion-header" onClick={(event)=>{toggleAccordion(1, event)}}>
+                    <h2>Chapter 1: Cell Biology</h2>
+                    <i className="fa-solid fa-chevron-down accordion-chevron"></i>
                   </div>
-                  <div class="accordion-content" id="content1">
-                    Content for section 1
+                  <div className="accordion-content" id="content1">
+                    <div className='accordion-btns'>
+                      <button className='button-title'>Content for section 1</button>
+                      <button className='button-check' onClick={(event)=>checkSection(event)} onMouseOut={(event)=>changeCheck(event)} onMouseOver={(event)=>changeCheck(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
+                    </div>
+                    <div className='accordion-btns'>
+                      <button className='button-title'>Content for section 2</button>
+                      <button className='button-check' onClick={(event)=>checkSection(event)} onMouseOut={(event)=>changeCheck(event)} onMouseOver={(event)=>changeCheck(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
+                    </div>
                   </div>
                 </div>
               </div>

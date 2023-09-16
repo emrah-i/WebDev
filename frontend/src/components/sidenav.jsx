@@ -17,28 +17,54 @@ function sideNav(props){
               <hr/>
               <ul className="nav nav-pills mb-auto flex-column">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/home" replace>
-                    <i class="fa-solid fa-house"></i>Home
+                  <Link className="nav-link" to="/home" replace>
+                    <i className="fa-solid fa-house"></i><span>Home</span>
+                    <p className="text-tip">Home</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/subject/biology" replace>
-                    <i class="fa-solid fa-magnifying-glass"></i>Search
+                    <i className="fa-solid fa-dna"></i><span>Biology</span>
+                  </Link>  
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/subject/biology" replace>
+                    <i className="fa-solid fa-atom"></i><span>Gen-Chem</span>
+                  </Link>  
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/subject/biology" replace>
+                    <i className="fa-solid fa-flask"></i><span>O-Chem</span>
+                  </Link>  
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/subject/biology" replace>
+                    <i className="fa-solid fa-arrows-up-down-left-right"></i><span>Physics</span>
+                  </Link>  
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/subject/biology" replace>
+                    <i className="fa-solid fa-book"></i><span>Reading</span>
+                  </Link>  
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/subject/biology" replace>
+                    <i className="fa-solid fa-calculator"></i><span>QR</span>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/home" replace>
-                    <i class="fa-solid fa-circle-dollar-to-slot"></i>Donate
+                    <i className="fa-solid fa-bug"></i><span>Report Bug</span>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/home" replace>
-                    <i class="fa-solid fa-bug"></i>Report Bug
+                    <i className="fa-solid fa-circle-dollar-to-slot"></i><span>Donate</span>
                   </Link>  
                 </li>
               </ul>
               <button className="sidebar-toggle" onClick={handleToggle}>
-                <i class="fa-solid fa-chevron-left"></i>
+                <i className="fa-solid fa-chevron-left"></i>
               </button>
               <hr/>
               <div className="dropdown">
