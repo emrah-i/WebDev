@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function sideNav(){
+function sideNav(props){
 
     function handleToggle(){
-      document.querySelector('.sidebar').classList.toggle('small-sidebar')
-      document.querySelector('main').classList.toggle('full-length')
+      props.setSidebar(prevSidebarOpen => !prevSidebarOpen);
+
+      document.querySelector('.sidebar').classList.toggle('small-sidebar');
+      document.querySelector('main').classList.toggle('full-length');
     }
 
     return (<div className="d-flex flex-column flex-shrink-0 text-bg-dark sidebar">
@@ -20,7 +22,7 @@ function sideNav(){
                   </Link>  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/home" replace>
+                  <Link className="nav-link" to="/subject/biology" replace>
                     <i class="fa-solid fa-magnifying-glass"></i>Search
                   </Link>  
                 </li>

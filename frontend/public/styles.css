@@ -11,6 +11,10 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .navbar {
   padding: 1rem 2rem;
   background-color: var(--m-opp);
@@ -62,7 +66,11 @@ body {
   transition: all 0.3s ease-in-out;
 }
 .sidebar hr {
+  color: none;
+  border: 0.1rem solid var(--main-color);
+  border-radius: 1rem;
   opacity: 1;
+  margin: 1rem;
 }
 .sidebar > a {
   padding-top: 1rem;
@@ -75,6 +83,9 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+.sidebar i {
+  font-size: 2rem;
 }
 .sidebar .nav-item {
   display: flex;
@@ -99,6 +110,7 @@ body {
 }
 .sidebar .sidebar-toggle {
   color: white;
+  top: 8%;
   right: -12%;
   background-color: var(--m-opp);
   display: flex;
@@ -166,6 +178,7 @@ body {
 .small-sidebar .sidebar-toggle {
   border: 0;
   right: -48%;
+  top: 0%;
 }
 .small-sidebar .sidebar-toggle i {
   margin-top: 0.5rem;
@@ -267,6 +280,45 @@ body {
   display: inline;
   margin-right: 0.5rem;
   margin-bottom: 1rem;
+}
+
+.subject {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  background-color: var(--sec-color);
+  padding-left: 18rem;
+  transition: all 0.3s ease-in-out;
+}
+.subject h2 {
+  padding: 0;
+  text-align: left;
+  margin-top: 1rem;
+}
+.subject h1 {
+  color: var(--main-color);
+  border-radius: 1rem;
+  padding: 2rem 1rem 0;
+}
+.subject .accordion {
+  padding: 1rem;
+}
+.subject .accordion-item {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.subject .accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+.subject .accordion-content {
+  height: 0;
+  padding: 10px;
+  transition: height 0.3s linear;
+}
+.subject .accordion-content.active {
+  height: 4rem;
 }
 
 .full-length {

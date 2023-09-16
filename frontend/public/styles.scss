@@ -11,6 +11,10 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+main {
+    min-height: 100vh;
+}
+
 .navbar {
     padding: 1rem 2rem;
     background-color: var(--m-opp);
@@ -69,7 +73,11 @@ body {
     transition: all .3s ease-in-out;
 
     hr {
+        color: none;
+        border: .1rem solid var(--main-color);
+        border-radius: 1rem;
         opacity: 1;
+        margin: 1rem ;
     }
 
     > a {
@@ -85,6 +93,10 @@ body {
         align-items: center;
         justify-content: center;
         width: 100%;
+    }
+
+    i {
+        font-size: 2rem;
     }
 
     .nav-item {
@@ -114,6 +126,7 @@ body {
 
     .sidebar-toggle {
         color: white;
+        top: 8%;
         right: -12%;
         background-color: var(--m-opp);
         display: flex;
@@ -195,6 +208,7 @@ body {
     .sidebar-toggle {
         border: 0;
         right: -48%;
+        top: 0%;
 
         i {
             margin-top: .5rem;
@@ -322,6 +336,54 @@ body {
         margin-bottom: 1rem;
     }
 }
+
+.subject {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    background-color: var(--sec-color);
+    padding-left: 18rem;
+    transition: all .3s ease-in-out;
+
+    h2 {
+        padding: 0;
+        text-align: left;
+        margin-top: 1rem;
+    }
+
+    h1 {
+        color: var(--main-color);
+        border-radius: 1rem;
+        padding: 2rem 1rem 0;
+    }
+
+    .accordion {
+        padding: 1rem;
+      }
+      
+    .accordion-item {
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+    
+    .accordion-header {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #f0f0f0;
+    }
+    
+    .accordion-content {
+        height: 0;
+        padding: 10px;
+        transition: height .3s linear;
+    }
+
+    .accordion-content.active {
+        height: 4rem;
+    }
+}
+
+// --------------- Applies to all 
 
 .full-length {
     padding-left: 3.5rem;
