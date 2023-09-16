@@ -25,6 +25,7 @@ function sideNav(props){
                 <li className="nav-item">
                   <Link className="nav-link" to="/subject/biology" replace>
                     <i className="fa-solid fa-dna"></i><span>Biology</span>
+                    <p className="text-tip">Biology</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
