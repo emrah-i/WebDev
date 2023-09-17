@@ -60,6 +60,18 @@ main {
         background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
         padding: 1rem;
         min-height: 40rem;
+
+        button {
+            border: none;
+            background-color: white;
+            border: 2px solid white;
+            color: var(--m-opp);
+        }
+
+        button:hover {
+            background-color: transparent;
+            color: white;
+        }
     }
 
     .seperator {
@@ -133,18 +145,20 @@ main {
         .price-col {
             flex-grow: 1;
             border-radius: .5rem;
-            border: 2px solid #c0c0c080;
+            border: 2px solid var(--m-opp);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 0;
+            box-shadow: var(--shadow);
 
             h2 {
                 background-color: #c0c0c080;
                 width: 100%;
                 text-align: center;
                 padding: .5rem;
+                border-bottom: 2px solid var(--m-opp);
             }
 
             div {
@@ -195,6 +209,12 @@ main {
                     display: flex;
                     justify-content: center;
                     color: #ff0000DF;
+                }
+
+                button {
+                    background-color: var(--sec-color);
+                    color: var(--main-color);
+                    border: none;
                 }
             }
         }
@@ -462,11 +482,13 @@ main {
     }
 
     .btn {
-        background-color: #A753A5;
+        background-color: #212529EF;
+        border: 2px solid #212529EF;
     }
 
     .btn:hover {
-        background-color: #008870;
+        color: #212529EF;
+        background-color: transparent;
     }
 
     hr {
@@ -606,6 +628,7 @@ main {
     }
 
     .accordion-chevron {
+        pointer-events: none;
         transition: all .3s ease;
     }
 
@@ -621,6 +644,7 @@ main {
 }
 
 .btn {
+    font-size: 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;

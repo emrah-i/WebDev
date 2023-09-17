@@ -10,7 +10,7 @@ function Main(props) {
               <div className="container py-5">
                 <h1 className="display-5 fw-bold">Welcome to PeakPrep</h1>
                 <p className="col-md-8 fs-4">The Best Location For FREE DAT/OAT Prep Content.</p>
-                <button className="btn btn-primary btn-lg" type="button">Register</button>
+                <button className="btn" type="button">Register</button>
               </div>
             </div>
             <div className='seperator'></div>
@@ -61,6 +61,7 @@ function Main(props) {
                       <li className='not-included'>Practice exams</li>
                       <li className='not-included'>Practice flashcards</li>
                     </ul>
+                    <button className="btn" type="button">Register</button>
                   </div>
                 </div>
                 <div className='col price-col'>
@@ -75,6 +76,7 @@ function Main(props) {
                       <li>Practice exams</li>
                       <li>Practice flashcards</li>
                     </ul>
+                    <button className="btn" type="button">Register</button>
                   </div>
                 </div>
                 <div className='col price-col'>
@@ -89,6 +91,7 @@ function Main(props) {
                       <li>Practice exams</li>
                       <li>Practice flashcards</li>
                     </ul>
+                    <button className="btn" type="button">Register</button>
                   </div>
                 </div>
               </div>
