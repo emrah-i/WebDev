@@ -267,9 +267,6 @@ main {
 
     .nav-item {
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 100%;
 
         i {
@@ -281,8 +278,8 @@ main {
             width: 100%;
             color: var(--main-color);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: left;
+            padding-left: 3.75rem;
             text-decoration: none;
         }
 
@@ -332,7 +329,6 @@ main {
 .small-sidebar {
     padding: 0;
     width: 3.5rem;
-    overflow: hidden;
 
     hr {
         margin: 0 !important;
@@ -364,7 +360,6 @@ main {
     }
 
     .nav-item {
-        width: 1000%;
 
         i {
             display: flex;
@@ -378,7 +373,7 @@ main {
         }
 
         a {
-            width: 100%;
+            width: 1000% !important;
             padding: .85rem;
             text-decoration: none;
             justify-content: left;

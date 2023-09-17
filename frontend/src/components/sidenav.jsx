@@ -15,7 +15,7 @@ function sideNav(props){
                 <span className="fs-4"><i className="fa-solid fa-mountain"></i> PeakPrep</span>
               </a>
               <hr/>
-              <ul className="nav nav-pills mb-auto flex-column">
+              <ul className="nav nav-pills mb-auto">
                 <li className="nav-item">
                   <Link className="nav-link" to="/home" replace>
                     <i className="fa-solid fa-house"></i><span>Home</span>
