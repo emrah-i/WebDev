@@ -36,23 +36,51 @@ function Main(props) {
                 </div>
               </div>
             </div>
+            <div className='details'>
+              <div className='seperator2-top'></div>
+              df
+              <div className='seperator2-bottom'></div>
+            </div>
             <div className='container pricing'>
-              <div className='row row-cols-md-3 row-cols-2'>
+              <div className='row'>
+                <div className='col header-col'>
+                  <h1>Pricing</h1>
+                  <p>This is as low as it gets motherfucker. Buy Now.</p>
+                </div>
+              </div>
+              <div className='row row-cols-md-4 row-cols-3'>
                 <div className='col price-col'>
                   <h2>Free</h2>
                   <div>
-                    <p>$0<span>/mo</span></p>
+                    <p><info>$0<span>/mo</span></info></p>
                     <ul>
                       <li>Videos for all subjects</li>
                       <li>Study guides</li>
-                      <li></li>
+                      <li className='not-included'>Practice flashcards</li>
+                      <li className='not-included'>Practice test questions</li>
+                      <li className='not-included'>Practice exams</li>
+                      <li className='not-included'>Practice flashcards</li>
                     </ul>
                   </div>
                 </div>
                 <div className='col price-col'>
-                  <h2>Premium</h2>
+                  <h2>1 Month Plan</h2>
                   <div>
-                    <p>$35<span>/mo</span></p>
+                    <p><info>$35<span>/mo</span></info></p>
+                    <ul>
+                      <li>Videos for all subjects</li>
+                      <li>Study guides</li>
+                      <li>Practice flashcards</li>
+                      <li>Practice test questions</li>
+                      <li>Practice exams</li>
+                      <li>Practice flashcards</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className='col price-col'>
+                  <h2>3 Month Plan</h2>
+                  <div>
+                    <p><s><span>$120</span></s><info>$100<span>/3mo</span></info></p>
                     <ul>
                       <li>Videos for all subjects</li>
                       <li>Study guides</li>

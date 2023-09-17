@@ -55,7 +55,7 @@ main {
   justify-content: center;
   background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
   padding: 1rem;
-  min-height: 35rem;
+  min-height: 40rem;
 }
 .center-screen .seperator {
   width: 0;
@@ -63,7 +63,7 @@ main {
   border-right: 100vw solid transparent;
   border-bottom: 4rem solid white;
   margin-top: -4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 .center-screen .cs-sec {
   display: flex;
@@ -77,8 +77,30 @@ main {
   width: 15rem;
   margin: 0 auto;
 }
+.center-screen .details {
+  position: relative;
+  margin-top: 5rem;
+  height: 40rem;
+  background-image: linear-gradient(to bottom, var(--third-color), var(--sec-color));
+}
+.center-screen .details .seperator2-top {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-right: 100vw solid transparent;
+  border-top: 4rem solid white;
+}
+.center-screen .details .seperator2-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 100vw solid transparent;
+  border-bottom: 4rem solid white;
+}
 .center-screen .pricing {
-  margin-top: 10rem;
+  margin-top: 5rem;
   color: var(--m-opp);
   margin-bottom: 5rem;
 }
@@ -86,7 +108,14 @@ main {
   gap: 3rem;
   display: flex;
   flex-direction: row;
-  align-items: stretch !important;
+  align-items: stretch;
+}
+.center-screen .pricing .header-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 .center-screen .pricing .price-col {
   flex-grow: 1;
@@ -112,6 +141,10 @@ main {
   align-items: center;
 }
 .center-screen .pricing .price-col div p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
   font-size: 4rem;
 }
 .center-screen .pricing .price-col div p span {
@@ -121,12 +154,27 @@ main {
   list-style: none;
   padding-left: 0;
 }
-.center-screen .pricing .price-col div li::before {
+.center-screen .pricing .price-col div li:not(.not-included)::before {
   content: "✓";
   color: green;
   display: inline-block;
   width: 1rem;
   margin-right: 0.75rem;
+}
+.center-screen .pricing .price-col div li.not-included::before {
+  content: "✘";
+  color: red;
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.75rem;
+}
+.center-screen .pricing .price-col div s span {
+  color: black;
+}
+.center-screen .pricing .price-col div s {
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 0, 0, 0.8745098039);
 }
 
 .sidebar {

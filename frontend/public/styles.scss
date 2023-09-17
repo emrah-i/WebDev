@@ -59,7 +59,7 @@ main {
         justify-content: center;
         background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
         padding: 1rem;
-        min-height: 35rem;
+        min-height: 40rem;
     }
 
     .seperator {
@@ -68,7 +68,7 @@ main {
         border-right: 100vw solid transparent;
         border-bottom: 4rem solid white;
         margin-top: -4rem;
-        margin-bottom: 2rem;
+        margin-bottom: 5rem;
     }
 
     .cs-sec {
@@ -85,8 +85,33 @@ main {
         }
     }
 
+    .details {
+        position: relative;
+        margin-top: 5rem;
+        height: 40rem;
+        background-image: linear-gradient(to bottom, var(--third-color), var(--sec-color));
+
+        .seperator2-top {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-right: 100vw solid transparent;
+            border-top: 4rem solid white;
+        }
+    
+        .seperator2-bottom {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 100vw solid transparent;
+            border-bottom: 4rem solid white;
+        }
+    }
+
     .pricing {
-        margin-top: 10rem;
+        margin-top: 5rem;
         color: var(--m-opp);
         margin-bottom: 5rem;
         
@@ -94,7 +119,15 @@ main {
             gap: 3rem;
             display: flex;
             flex-direction: row;
-            align-items: stretch !important;
+            align-items: stretch;
+        }
+
+        .header-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
 
         .price-col {
@@ -122,6 +155,10 @@ main {
                 align-items: center;
 
                 p {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100%;
                     font-size: 4rem;
     
                     span {
@@ -134,12 +171,30 @@ main {
                     padding-left: 0; 
                 }
     
-                li::before {
+                li:not(.not-included)::before {
                     content: "\2713";
                     color: green;
                     display: inline-block;
                     width: 1rem;
                     margin-right: .75rem;
+                }
+
+                li.not-included::before {
+                    content: "\2718";
+                    color: red;
+                    display: inline-block;
+                    width: 1rem;
+                    margin-right: .75rem;
+                }
+
+                s span {
+                    color: black;
+                }
+
+                s {
+                    display: flex;
+                    justify-content: center;
+                    color: #ff0000DF;
                 }
             }
         }
