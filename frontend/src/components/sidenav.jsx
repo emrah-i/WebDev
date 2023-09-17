@@ -29,38 +29,45 @@ function sideNav(props){
                   </Link>  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/subject/biology" replace>
+                  <Link className="nav-link" to="/subject/general-chemistry" replace>
                     <i className="fa-solid fa-atom"></i><span>Gen-Chem</span>
+                    <p className="text-tip">General Chemistry</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/subject/biology" replace>
+                  <Link className="nav-link" to="/subject/organic-chemistry" replace>
                     <i className="fa-solid fa-flask"></i><span>O-Chem</span>
+                    <p className="text-tip">Organic Chemistry</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/subject/biology" replace>
                     <i className="fa-solid fa-arrows-up-down-left-right"></i><span>Physics</span>
+                    <p className="text-tip">Physics</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/subject/biology" replace>
                     <i className="fa-solid fa-book"></i><span>Reading</span>
+                    <p className="text-tip">Reading Comprehension</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/subject/biology" replace>
                     <i className="fa-solid fa-calculator"></i><span>QR</span>
+                    <p className="text-tip">Quantitative Reasoning</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/home" replace>
                     <i className="fa-solid fa-bug"></i><span>Report Bug</span>
+                    <p className="text-tip">Report Bug</p>
                   </Link>  
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/home" replace>
                     <i className="fa-solid fa-circle-dollar-to-slot"></i><span>Donate</span>
+                    <p className="text-tip">Donate</p>
                   </Link>  
                 </li>
               </ul>

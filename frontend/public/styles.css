@@ -3,6 +3,7 @@
   --m-opp: #212529;
   --sec-color: #2fac61;
   --third-color:#008870BF;
+  --shadow: 0 0 .5rem .5rem #00000020;
 }
 
 body {
@@ -16,20 +17,25 @@ main {
 }
 
 .navbar {
+  background-color: var(--main-color);
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  position: fixed;
   padding: 1rem 2rem;
-  background-color: var(--m-opp);
+  box-shadow: var(--shadow);
 }
 .navbar > div {
   padding: 0;
 }
 .navbar .navbar-brand {
-  color: var(--main-color);
+  color: var(--m-opp);
 }
 .navbar .nav-item {
   margin-left: 1rem;
 }
 .navbar .nav-item a {
-  color: var(--main-color);
+  color: var(--m-opp);
   text-decoration: none;
 }
 .navbar .nav-item a:hover {
@@ -37,25 +43,28 @@ main {
 }
 
 .center-screen {
-  margin: auto 1rem;
+  margin-top: 4rem;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 .center-screen .cs-main {
-  background-image: linear-gradient(to bottom left, #60cc8c, #3c8a5d);
-  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to left, var(--sec-color), #3c8a5d);
   padding: 1rem;
-  border-radius: 0.25rem;
+  min-height: 30rem;
 }
 .center-screen .cs-sec {
-  background-color: rgb(93, 92, 92);
+  background-color: transparent;
+  color: var(--m-opp);
   height: 100%;
   padding: 1rem;
-  border-radius: 0.25rem;
 }
 
 .sidebar {
+  overflow: hidden;
   position: relative;
   padding: 1rem;
   position: fixed;
@@ -64,6 +73,7 @@ main {
   width: 18rem;
   height: 100vh;
   transition: all 0.3s ease-in-out;
+  box-shadow: var(--shadow);
 }
 .sidebar hr {
   color: none;
@@ -118,15 +128,15 @@ main {
 }
 .sidebar .sidebar-toggle {
   color: white;
-  top: 7.5%;
-  right: -10%;
+  top: 0;
+  right: 0;
   background-color: var(--m-opp);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0 1rem 1rem 0;
+  border-radius: 1rem 0 0 1rem;
   border: 3px solid white;
-  border-left: 0;
+  border-right: 0;
   width: 2.75rem;
   height: 2.75rem;
   position: absolute;
@@ -256,7 +266,7 @@ main {
   color: var(--m-opp);
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1254901961);
+  box-shadow: var(--shadow);
 }
 .homepage .home-col .progress {
   margin-top: 0.5rem;
@@ -289,7 +299,7 @@ main {
   background-color: var(--main-color);
   color: var(--m-opp);
   border-radius: 1rem;
-  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1254901961);
+  box-shadow: var(--shadow);
 }
 .homepage .todo-list ul {
   list-style: none;
@@ -340,6 +350,7 @@ main {
   border-radius: 1rem;
   border: none;
   overflow: hidden;
+  box-shadow: var(--shadow);
 }
 .subject .accordion-header {
   padding: 1rem;

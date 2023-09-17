@@ -7,7 +7,7 @@ function Main(props) {
 
   return (<main className='center-screen'>
             <div className="cs-main">
-              <div className="container-fluid py-5">
+              <div className="container py-5">
                 <h1 className="display-5 fw-bold">Welcome to PeakPrep</h1>
                 <p className="col-md-8 fs-4">The Best Location For FREE DAT/OAT Prep Content.</p>
                 <button className="btn btn-primary btn-lg" type="button">Register</button>
@@ -15,19 +15,21 @@ function Main(props) {
             </div>
             <p>I simply belive that every road you walk on was paved by someone before you. Therefore, if you don't pay that favor back, you're hurting society.</p>
 
-            <div className="row align-items-md-stretch">
-              <div className="col-md-6">
-                <div className="cs-sec">
-                  <h2>Proven to Work:</h2>
-                  <p>These are my personal tools that I used to get a 390AA and 400TS on the OAT</p>
-                  <button className="btn btn-outline-light" type="button">Example button</button>
+            <div className="container align-items-md-stretch">
+              <div className='row'>
+                <div className="col-md-6">
+                  <div className="cs-sec">
+                    <h2>Proven to Work:</h2>
+                    <p>These are my personal tools that I used to get a 390AA and 400TS on the OAT</p>
+                    <button className="btn btn-outline-light" type="button">Example button</button>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-6">
-                <div className="cs-sec">
-                  <h2>All Content is Free!</h2>
-                  <p>All content that I recieved for FREE is FREE for the public. The only content behind a paywall are the ones that I personally created.</p>
-                  <button className="btn btn-outline-secondary" type="button">Example button</button>
+                <div className="col-md-6">
+                  <div className="cs-sec">
+                    <h2>All Content is Free!</h2>
+                    <p><u>All content that I recieved for FREE is FREE for the public.</u> The only content behind a paywall are the ones that I personally created.</p>
+                    <button className="btn btn-outline-secondary" type="button">Example button</button>
+                  </div>
                 </div>
               </div>
             </div>
