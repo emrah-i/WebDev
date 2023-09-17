@@ -13,22 +13,54 @@ function Main(props) {
                 <button className="btn btn-primary btn-lg" type="button">Register</button>
               </div>
             </div>
-            <p>I simply belive that every road you walk on was paved by someone before you. Therefore, if you don't pay that favor back, you're hurting society.</p>
+            <div className='seperator'></div>
+
+            {/* <p>I simply belive that every road you walk on was paved by someone before you. Therefore, if you don't pay that favor back, you're hurting society.</p> */}
 
             <div className="container align-items-md-stretch">
               <div className='row'>
                 <div className="col-md-6">
                   <div className="cs-sec">
-                    <h2>Proven to Work:</h2>
-                    <p>These are my personal tools that I used to get a 390AA and 400TS on the OAT</p>
-                    <button className="btn btn-outline-light" type="button">Example button</button>
+                    <h2>Proven to Work!</h2>
+                    <p>These are the tools that I used to prepare for the DAT/OAT. I took the OAT and got a 390AA and 400TS on my <u>first try.</u></p>
+                    <img src="/grades.svg" />
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="cs-sec">
-                    <h2>All Content is Free!</h2>
-                    <p><u>All content that I recieved for FREE is FREE for the public.</u> The only content behind a paywall are the ones that I personally created.</p>
-                    <button className="btn btn-outline-secondary" type="button">Example button</button>
+                    <h2>Free Content!</h2>
+                    <p><u>All content that I recieved for FREE is FREE for the public.</u> The only content behind a paywall are the ones that I personally created.
+                    This project began in order to create a system that <strong>WON'T</strong> break the bank.</p>
+                    <img src="/piggy.svg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='container pricing'>
+              <div className='row row-cols-md-3 row-cols-2'>
+                <div className='col price-col'>
+                  <h2>Free</h2>
+                  <div>
+                    <p>$0<span>/mo</span></p>
+                    <ul>
+                      <li>Videos for all subjects</li>
+                      <li>Study guides</li>
+                      <li></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className='col price-col'>
+                  <h2>Premium</h2>
+                  <div>
+                    <p>$35<span>/mo</span></p>
+                    <ul>
+                      <li>Videos for all subjects</li>
+                      <li>Study guides</li>
+                      <li>Practice flashcards</li>
+                      <li>Practice test questions</li>
+                      <li>Practice exams</li>
+                      <li>Practice flashcards</li>
+                    </ul>
                   </div>
                 </div>
               </div>

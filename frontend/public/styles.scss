@@ -1,8 +1,8 @@
 :root{
     --main-color: white;
     --m-opp: #212529;
-    --sec-color: #2fac61;
-    --third-color:#008870BF;
+    --sec-color: #dd576e;
+    --third-color: #d7b288;
     --shadow: 0 0 .5rem .5rem #00000020;
 }
 
@@ -57,16 +57,92 @@ main {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: linear-gradient(to left, var(--sec-color), #3c8a5d);
+        background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
         padding: 1rem;
-        min-height: 30rem;
+        min-height: 35rem;
+    }
+
+    .seperator {
+        width: 0;
+        height: 0;
+        border-right: 100vw solid transparent;
+        border-bottom: 4rem solid white;
+        margin-top: -4rem;
+        margin-bottom: 2rem;
     }
 
     .cs-sec {
+        display: flex;
+        flex-direction: column;
         background-color: transparent;
         color: var(--m-opp);
         height: 100%;
         padding: 1rem;
+
+        img {
+            width: 15rem;
+            margin: 0 auto;
+        }
+    }
+
+    .pricing {
+        margin-top: 10rem;
+        color: var(--m-opp);
+        margin-bottom: 5rem;
+        
+        .row {
+            gap: 3rem;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch !important;
+        }
+
+        .price-col {
+            flex-grow: 1;
+            border-radius: .5rem;
+            border: 2px solid #c0c0c080;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+
+            h2 {
+                background-color: #c0c0c080;
+                width: 100%;
+                text-align: center;
+                padding: .5rem;
+            }
+
+            div {
+                margin-top: 1rem;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    font-size: 4rem;
+    
+                    span {
+                        color: #c0c0c080;
+                    }
+                }
+    
+                li {
+                    list-style: none;
+                    padding-left: 0; 
+                }
+    
+                li::before {
+                    content: "\2713";
+                    color: green;
+                    display: inline-block;
+                    width: 1rem;
+                    margin-right: .75rem;
+                }
+            }
+        }
     }
 }
 
@@ -99,6 +175,7 @@ main {
         align-items: center;
         justify-content: center;
         width: 100%;
+        transition: color .2s;
 
         :hover {
             color: var(--sec-color);
@@ -153,18 +230,17 @@ main {
         justify-content: center;
         align-items: center;
         border-radius: 1rem 0 0 1rem;
-        border: 3px solid white;
-        border-right: 0;
+        border: 0;
         width: 2.75rem;
         height: 2.75rem;
         position: absolute;
 
         i {
             font-size: 1.75rem;
-            transition: all .3s ease .2s;
+            transition: transform .3s ease .2s, color .2s;
         }
 
-        :hover i {
+        i:hover {
             color: var(--sec-color) !important;
         }
     }
@@ -269,7 +345,7 @@ main {
     height: 100%;
     width: 100%;
     padding: 0;
-    background-color: var(--sec-color);
+    background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
     padding-left: 18rem;
     transition: all .3s ease-in-out;
 
@@ -331,7 +407,7 @@ main {
     }
 
     .btn {
-        background-color: var(--third-color);
+        background-color: #A753A5;
     }
 
     .btn:hover {

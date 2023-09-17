@@ -1,8 +1,9 @@
+@charset "UTF-8";
 :root {
   --main-color: white;
   --m-opp: #212529;
-  --sec-color: #2fac61;
-  --third-color:#008870BF;
+  --sec-color: #dd576e;
+  --third-color: #d7b288;
   --shadow: 0 0 .5rem .5rem #00000020;
 }
 
@@ -52,15 +53,80 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to left, var(--sec-color), #3c8a5d);
+  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
   padding: 1rem;
-  min-height: 30rem;
+  min-height: 35rem;
+}
+.center-screen .seperator {
+  width: 0;
+  height: 0;
+  border-right: 100vw solid transparent;
+  border-bottom: 4rem solid white;
+  margin-top: -4rem;
+  margin-bottom: 2rem;
 }
 .center-screen .cs-sec {
+  display: flex;
+  flex-direction: column;
   background-color: transparent;
   color: var(--m-opp);
   height: 100%;
   padding: 1rem;
+}
+.center-screen .cs-sec img {
+  width: 15rem;
+  margin: 0 auto;
+}
+.center-screen .pricing {
+  margin-top: 10rem;
+  color: var(--m-opp);
+  margin-bottom: 5rem;
+}
+.center-screen .pricing .row {
+  gap: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch !important;
+}
+.center-screen .pricing .price-col {
+  flex-grow: 1;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(192, 192, 192, 0.5019607843);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.center-screen .pricing .price-col h2 {
+  background-color: rgba(192, 192, 192, 0.5019607843);
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+}
+.center-screen .pricing .price-col div {
+  margin-top: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.center-screen .pricing .price-col div p {
+  font-size: 4rem;
+}
+.center-screen .pricing .price-col div p span {
+  color: rgba(192, 192, 192, 0.5019607843);
+}
+.center-screen .pricing .price-col div li {
+  list-style: none;
+  padding-left: 0;
+}
+.center-screen .pricing .price-col div li::before {
+  content: "✓";
+  color: green;
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.75rem;
 }
 
 .sidebar {
@@ -90,6 +156,7 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
+  transition: color 0.2s;
 }
 .sidebar .navbar-brand :hover {
   color: var(--sec-color);
@@ -135,17 +202,16 @@ main {
   justify-content: center;
   align-items: center;
   border-radius: 1rem 0 0 1rem;
-  border: 3px solid white;
-  border-right: 0;
+  border: 0;
   width: 2.75rem;
   height: 2.75rem;
   position: absolute;
 }
 .sidebar .sidebar-toggle i {
   font-size: 1.75rem;
-  transition: all 0.3s ease 0.2s;
+  transition: transform 0.3s ease 0.2s, color 0.2s;
 }
-.sidebar .sidebar-toggle :hover i {
+.sidebar .sidebar-toggle i:hover {
   color: var(--sec-color) !important;
 }
 .sidebar .dropdown > a {
@@ -232,7 +298,7 @@ main {
   height: 100%;
   width: 100%;
   padding: 0;
-  background-color: var(--sec-color);
+  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
   padding-left: 18rem;
   transition: all 0.3s ease-in-out;
 }
@@ -283,7 +349,7 @@ main {
   flex-grow: 1;
 }
 .homepage .btn {
-  background-color: var(--third-color);
+  background-color: #A753A5;
 }
 .homepage .btn:hover {
   background-color: #008870;
