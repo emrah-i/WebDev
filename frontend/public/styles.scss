@@ -17,13 +17,14 @@ main {
 }
 
 .navbar {
-    background-color: var(--main-color);
+    background-color: transparent;
     width: 100%;
     z-index: 2;
     top: 0;
     position: fixed;
     padding: 1rem 2rem;
-    box-shadow: var(--shadow);
+    box-shadow: 0;
+    transition: background-color .25s ease;
 
     > div {
         padding: 0;
@@ -31,14 +32,14 @@ main {
 
     .navbar-brand {
         font-size: 1.75rem;
-        color: var(--m-opp);
+        color: var(--main-color);
     }
 
     .nav-item {
         margin-left: 1rem;
 
         a {
-            color: var(--m-opp);
+            color: var(--main-color);
             text-decoration: none;
         }
 
@@ -48,8 +49,22 @@ main {
     }
 }
 
+.navbar.at-top {
+    background-color: var(--main-color);
+    box-shadow: var(--shadow);
+
+    .navbar-brand {
+        color: var(--m-opp);
+    }
+
+    .nav-item {
+        a {
+            color: var(--m-opp);
+        }
+    }
+}
+
 .center-screen {
-    margin-top: 4rem;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -666,25 +681,54 @@ main {
     background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
     transition: all .3s ease-in-out;
 
-    .questions-list {
+    .questions-list-parent {
         background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
-        padding: 1rem;
         width: 20rem;
+        padding: 1rem 0;
+        z-index: 2;
+        box-shadow: var(--shadow);
+        height: 100vh;
+    }   
+
+    .questions-list {
+        background-color: transparent;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        z-index: 2;
-        box-shadow: var(--shadow);
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: 0 .5rem .5rem -.5rem #000000AE;
 
         button {
             background-color: var(--main-color);
             color: var(--m-opp);
             width: 100%;
+            margin: 0;
+            border-radius: 0;
+            border-top: 2px solid #00000020;
         }
 
         button:hover {
             background-color: #FFFFFFDF;
         }
+        
+        .btn:first-child {
+            border-radius: .5rem .5rem 0 0;
+            border: 0;
+        }
+
+        .btn:last-child {
+            border-radius: 0 0 .5rem .5rem;
+        }
+    }
+
+    .questions-list.at-bottom {
+        box-shadow: 0 -1rem 1rem -1rem rgba(0, 0, 0, 0.5)
+    }
+
+    .questions-list.not-top {
+        box-shadow: 0 -1rem 1rem -1rem rgba(0, 0, 0, 0.5), 0 1rem 1rem -1rem rgba(0, 0, 0, 0.5);
     }
 
     .question-area {

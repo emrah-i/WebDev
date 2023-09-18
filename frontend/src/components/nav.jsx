@@ -1,7 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Nav() {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/'){
+            const debounce = (func, delay) => {
+            let timeout;
+            return function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                func();
+                }, delay);
+            };
+            };
+        
+            function navbarTrans() {
+            const scrollTop =
+                document.documentElement.scrollTop || document.body.scrollTop;
+        
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                if (scrollTop > 35) {
+                navbar.classList.add('at-top');
+                } else {
+                navbar.classList.remove('at-top');
+                }
+            }
+            }
+        
+            document.addEventListener('scroll', debounce(navbarTrans, 35));
+        
+            return () => {
+            document.removeEventListener('scroll', debounce(navbarTrans, 50));
+            };
+        }
+      }, [location]);
+
     return (
         <nav className="navbar navbar-expand-lg" aria-label="Fifth navbar example">
             <div className="container-fluid">

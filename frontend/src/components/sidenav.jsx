@@ -29,7 +29,7 @@ function sideNav(props){
                   </Link>  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/subject/general-chemistry" replace>
+                  <Link className="nav-link" to="/questions" replace>
                     <i className="fa-solid fa-atom"></i><span>Gen-Chem</span>
                     <p className="text-tip">General Chemistry</p>
                   </Link>  

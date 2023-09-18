@@ -270,10 +270,62 @@ function Questions() {
       event.target.classList.toggle('cancel')
     }
 
+    function scrollPosition(event) {
+        const questions = event.target
+        const isAtBottom = questions.scrollHeight - questions.scrollTop === questions.clientHeight;
+        const isAtTop = questions.scrollTop === 0
+      
+        if (isAtBottom) {
+          questions.classList.add('at-bottom')
+          questions.classList.remove('not-top')
+        }
+        else if (isAtTop) {
+          questions.classList.remove('at-bottom')
+          questions.classList.remove('not-top')
+        }
+        else {
+          questions.classList.remove('at-bottom')
+          questions.classList.add('not-top')
+        }
+      
+    };
+
     return(<main className='questions'>
-            <div className='questions-list'>
-                <button className='btn'>Question 1</button>
-                <button className='btn'>Question 2</button>
+            <div className='questions-list-parent'>
+                <div className='questions-list' onScroll={(event)=>scrollPosition(event)}>
+                    <button className='btn'>Question 1</button>
+                    <button className='btn'>Question 2</button>
+                    <button className='btn'>Question 3</button>
+                    <button className='btn'>Question 4</button>
+                    <button className='btn'>Question 5</button>
+                    <button className='btn'>Question 6</button>
+                    <button className='btn'>Question 7</button>
+                    <button className='btn'>Question 8</button>
+                    <button className='btn'>Question 1</button>
+                    <button className='btn'>Question 2</button>
+                    <button className='btn'>Question 3</button>
+                    <button className='btn'>Question 4</button>
+                    <button className='btn'>Question 5</button>
+                    <button className='btn'>Question 6</button>
+                    <button className='btn'>Question 7</button>
+                    <button className='btn'>Question 8</button>
+                    <button className='btn'>Question 1</button>
+                    <button className='btn'>Question 2</button>
+                    <button className='btn'>Question 3</button>
+                    <button className='btn'>Question 4</button>
+                    <button className='btn'>Question 5</button>
+                    <button className='btn'>Question 6</button>
+                    <button className='btn'>Question 7</button>
+                    <button className='btn'>Question 8</button>
+                    <button className='btn'>Question 1</button>
+                    <button className='btn'>Question 2</button>
+                    <button className='btn'>Question 3</button>
+                    <button className='btn'>Question 4</button>
+                    <button className='btn'>Question 5</button>
+                    <button className='btn'>Question 6</button>
+                    <button className='btn'>Question 7</button>
+                    <button className='btn'>Question 8</button>
+                </div>
             </div>
             <div className='question-area'>
                 <h3>Question:</h3>
