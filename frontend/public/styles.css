@@ -168,7 +168,7 @@ main {
   padding-left: 0;
 }
 .center-screen .pricing .price-col div li:not(.not-included)::before {
-  content: "✓";
+  content: "✔";
   color: green;
   display: inline-block;
   width: 1rem;
@@ -210,6 +210,7 @@ main {
   height: 100vh;
   transition: all 0.3s ease-in-out;
   box-shadow: var(--shadow);
+  z-index: 3;
 }
 .sidebar hr {
   color: none;
@@ -242,6 +243,9 @@ main {
   width: 100%;
 }
 .sidebar .nav-item i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
   margin-right: 1rem;
 }
@@ -316,9 +320,7 @@ main {
   padding: 0.75rem;
 }
 .small-sidebar .nav-item i {
-  display: flex;
-  justify-content: center;
-  width: 1.75rem;
+  width: 1.5rem;
   margin-right: 5rem;
 }
 .small-sidebar .nav-item :hover i {
@@ -446,6 +448,7 @@ main {
 .homepage .todo-list form {
   margin-bottom: 1rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 .homepage .todo-list .btn {
@@ -463,11 +466,12 @@ main {
   height: 100%;
   width: 100%;
   padding: 0;
-  background-color: var(--sec-color);
+  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
   padding-left: 18rem;
   transition: all 0.3s ease-in-out;
 }
 .subject h2 {
+  pointer-events: none;
   padding: 0;
   text-align: left;
   margin-top: 1rem;
@@ -494,9 +498,16 @@ main {
   cursor: pointer;
   background-color: #f0f0f0;
 }
-.subject .accordion-header h2 {
+.subject .accordion-header div {
+  pointer-events: none;
+}
+.subject .accordion-header h2, .subject .accordion-header p {
   pointer-events: none;
   margin: 0;
+  display: inline;
+}
+.subject .accordion-header p {
+  margin-left: 1.5rem;
 }
 .subject .accordion-content {
   max-height: 0;
@@ -541,6 +552,83 @@ main {
 }
 .subject .accordion-chevron.active {
   transform: rotate(180deg);
+}
+.subject .progress {
+  background-color: red;
+}
+
+.questions {
+  display: flex;
+  flex-direction: row;
+  padding-left: 18rem;
+  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
+  transition: all 0.3s ease-in-out;
+}
+.questions .questions-list {
+  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
+  padding: 1rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  box-shadow: var(--shadow);
+}
+.questions .questions-list button {
+  background-color: var(--main-color);
+  color: var(--m-opp);
+  width: 100%;
+}
+.questions .questions-list button:hover {
+  background-color: rgba(255, 255, 255, 0.8745098039);
+}
+.questions .question-area {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 1.25rem;
+  width: 100%;
+  padding: 3rem 4rem 4rem;
+  background-color: var(--main-color);
+  color: var(--m-opp);
+}
+.questions .question-area form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.questions .question-area form span {
+  padding-left: 2rem;
+}
+.questions .question-area form label:hover {
+  cursor: pointer;
+}
+.questions .question-area form label.cancel {
+  text-decoration: line-through;
+  color: rgb(126, 126, 126);
+}
+.questions .question-area form .questions-buttons {
+  margin-top: 10rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+}
+.questions .question-area form .questions-buttons .left-side-btns, .questions .question-area form .questions-buttons .right-side-btns {
+  display: flex;
+  height: -moz-fit-content;
+  height: fit-content;
+  gap: 1rem;
+}
+.questions .question-area form .questions-buttons .back-btn, .questions .question-area form .questions-buttons .next-btn {
+  background-color: var(--sec-color);
+}
+.questions .question-area form .questions-buttons .mark-btn, .questions .question-area form .questions-buttons .check-btn {
+  background-color: #8D5790;
 }
 
 .full-length {

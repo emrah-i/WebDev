@@ -187,7 +187,7 @@ main {
                 }
     
                 li:not(.not-included)::before {
-                    content: "\2713";
+                    content: "\2714";
                     color: green;
                     display: inline-block;
                     width: 1rem;
@@ -238,6 +238,7 @@ main {
     height: 100vh;
     transition: all .3s ease-in-out;
     box-shadow: var(--shadow);
+    z-index: 3;
 
     hr {
         color: none;
@@ -276,6 +277,9 @@ main {
         width: 100%;
 
         i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
             margin-right: 1rem;
         }
@@ -368,9 +372,7 @@ main {
     .nav-item {
 
         i {
-            display: flex;
-            justify-content: center;
-            width: 1.75rem;
+            width: 1.5rem;
             margin-right: 5rem;
         }
 
@@ -525,6 +527,7 @@ main {
         form {
             margin-bottom: 1rem;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
         }
 
@@ -546,11 +549,12 @@ main {
     height: 100%;
     width: 100%;
     padding: 0;
-    background-color: var(--sec-color);
+    background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
     padding-left: 18rem;
     transition: all .3s ease-in-out;
 
     h2 {
+        pointer-events: none;
         padding: 0;
         text-align: left;
         margin-top: 1rem;
@@ -580,10 +584,19 @@ main {
         justify-content: space-between;
         cursor: pointer;
         background-color: #f0f0f0;
+
+        div {
+            pointer-events: none;
+        }
     
-        h2 {
+        h2, p {
             pointer-events: none;
             margin: 0;
+            display: inline;
+        }
+
+        p {
+            margin-left: 1.5rem;
         }
     }
     
@@ -639,6 +652,95 @@ main {
 
     .accordion-chevron.active {
         transform: rotate(180deg);
+    }
+
+    .progress {
+        background-color: red;
+    }
+}
+
+.questions {
+    display: flex;
+    flex-direction: row;
+    padding-left: 18rem;
+    background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
+    transition: all .3s ease-in-out;
+
+    .questions-list {
+        background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
+        padding: 1rem;
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+        box-shadow: var(--shadow);
+
+        button {
+            background-color: var(--main-color);
+            color: var(--m-opp);
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #FFFFFFDF;
+        }
+    }
+
+    .question-area {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        font-size: 1.25rem;
+        width: 100%;
+        padding: 3rem 4rem 4rem;
+        background-color: var(--main-color);
+        color: var(--m-opp);
+
+        form {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            span {
+                padding-left: 2rem;
+            }
+
+            label:hover {
+                cursor: pointer;
+            }
+
+            label.cancel {
+                text-decoration: line-through;
+                color: rgb(126, 126, 126);
+            }
+
+            .questions-buttons {
+                margin-top: 10rem;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: end;
+                justify-content: space-between;
+
+                .left-side-btns, .right-side-btns {
+                    display: flex;
+                    height: fit-content;
+                    gap: 1rem;
+                }
+
+                .back-btn, .next-btn {
+                    background-color: var(--sec-color);
+                }
+
+                .mark-btn, .check-btn {
+                    background-color: #8D5790;
+                }
+            }
+        }
     }
 }
 

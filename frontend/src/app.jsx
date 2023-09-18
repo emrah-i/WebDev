@@ -230,14 +230,6 @@ function Subject(props) {
 
     const toggleList = ['fa-circle', 'fa-solid', 'fa-regular', 'fa-circle-check']
 
-    function changeCheck(event) {
-      const hover_element = event.target
-      const icon = hover_element.querySelector('i')
-      toggleList.forEach(element=> {
-        icon.classList.toggle(element)
-      })
-    }
-
     function checkSection(event) {
       event.target.closest('.accordion-btns').classList.toggle('done_section')
       const icon = event.target.querySelector('i')
@@ -251,17 +243,20 @@ function Subject(props) {
               <div className="accordion">
                 <div className="accordion-item">
                   <div className="accordion-header" onClick={(event)=>{toggleAccordion(1, event)}}>
+                    <div>
                     <h2>Chapter 1: Cell Biology</h2>
+                    <p>(<span className='chapters-complete'>0</span> / <span className='total-chapters'>2</span> Complete)</p>
+                    </div>
                     <i className="fa-solid fa-chevron-down accordion-chevron"></i>
                   </div>
                   <div className="accordion-content" id="content1">
                     <div className='accordion-btns'>
                       <button className='button-title'>Content for section 1</button>
-                      <button className='button-check' onClick={(event)=>checkSection(event)} onMouseOut={(event)=>changeCheck(event)} onMouseOver={(event)=>changeCheck(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
+                      <button className='button-check' onClick={(event)=>checkSection(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
                     </div>
                     <div className='accordion-btns'>
                       <button className='button-title'>Content for section 2</button>
-                      <button className='button-check' onClick={(event)=>checkSection(event)} onMouseOut={(event)=>changeCheck(event)} onMouseOver={(event)=>changeCheck(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
+                      <button className='button-check' onClick={(event)=>checkSection(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
                     </div>
                   </div>
                 </div>
@@ -269,7 +264,39 @@ function Subject(props) {
             </main>)
 }
 
-function NavigationHandler(){
+function Questions() {
+
+    function removeAnswer(event) {
+      event.target.classList.toggle('cancel')
+    }
+
+    return(<main className='questions'>
+            <div className='questions-list'>
+                <button className='btn'>Question 1</button>
+                <button className='btn'>Question 2</button>
+            </div>
+            <div className='question-area'>
+                <h3>Question:</h3>
+                <p>What is the mass of the Earth?</p>
+                <form>
+                  <span><input type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg</label></span>
+                  <span><input type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg+</label></span>
+                  <div className='questions-buttons'>
+                    <div className='left-side-btns'>
+                      <button className='btn back-btn'>Back</button>
+                    </div>
+                    <div className='right-side-btns'>
+                      <button className='btn next-btn'>Next</button>
+                      <button className='btn check-btn'>Check Answer</button>
+                      <button className='btn mark-btn'>Mark</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </main>)
+}
+
+function NavigationHandler(props){
   const location = useLocation();
   const [showNav, setShowNav] = useState(true);
 
@@ -277,7 +304,7 @@ function NavigationHandler(){
     setShowNav(location.pathname === '/');
   }, [location]);
 
-  return showNav ? <Nav /> : <SideNav />;
+  return showNav ? <Nav /> : <SideNav setSidebarOpen={props.setSidebarOpen} />;
 };
 
 function App(props) {
@@ -285,12 +312,12 @@ function App(props) {
 
     return (
       <Router>
-          <NavigationHandler />
+          <NavigationHandler setSidebarOpen={setSidebarOpen} />
           <Routes>
             <Route exact path="/" element={<Main/>} />
-            <Route exact path="/home" element={<Home sidebarOpen={sidebarOpen} />} />
+            <Route exact path="/home" element={<Home sidebarOpen={setSidebarOpen} />} />
             <Route exact path="/subject/:subject" element={<Subject sidebarOpen={sidebarOpen} />} />
-            <Route exact path="/home" element={<Home sidebarOpen={sidebarOpen} />} />
+            <Route exact path="questions" element={<Questions />} />
           </Routes>
       </Router>
     )
