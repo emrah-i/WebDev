@@ -30,6 +30,7 @@ main {
     }
 
     .navbar-brand {
+        font-size: 1.75rem;
         color: var(--m-opp);
     }
 
@@ -58,7 +59,7 @@ main {
         align-items: center;
         justify-content: center;
         background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
-        padding: 1rem;
+        padding-bottom: 3.5rem;
         min-height: 40rem;
 
         button {
@@ -212,9 +213,14 @@ main {
                 }
 
                 button {
-                    background-color: var(--sec-color);
+                    background-color: #212529EF;
+                    border: 2px solid #212529EF;
                     color: var(--main-color);
-                    border: none;
+                }
+
+                button:hover {
+                    background-color: white;
+                    color: #212529EF;
                 }
             }
         }

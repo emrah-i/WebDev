@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function sideNav(props){
 
     function handleToggle(){
-      props.setSidebar(prevSidebarOpen => !prevSidebarOpen);
+      props.setSidebarOpen(prevSidebarOpen => !prevSidebarOpen);
 
       document.querySelector('.sidebar').classList.toggle('small-sidebar');
       document.querySelector('main').classList.toggle('full-length');

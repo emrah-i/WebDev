@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams, useLocation } from "react-router-dom";
 import Nav from './components/nav';
 import SideNav from './components/sidenav'
 
@@ -84,11 +84,11 @@ function Main(props) {
                   <div>
                     <p><s><span>$120</span></s><info>$100<span>/3mo</span></info></p>
                     <ul>
-                      <li>Videos for all subjects</li>
-                      <li>Study guides</li>
-                      <li>Practice flashcards</li>
-                      <li>Practice test questions</li>
-                      <li>Practice exams</li>
+                      <li>Videos for All Subjects</li>
+                      <li>Study Guides</li>
+                      <li>Flashcards</li>
+                      <li>Practice Questions</li>
+                      <li>Practice Tests</li>
                       <li>Practice flashcards</li>
                     </ul>
                     <button className="btn" type="button">Register</button>
@@ -269,12 +269,23 @@ function Subject(props) {
             </main>)
 }
 
-function App() {
-    const [ sidebarOpen, setSidebar ] = useState(true)
-  
+function NavigationHandler(){
+  const location = useLocation();
+  const [showNav, setShowNav] = useState(true);
+
+  useEffect(() => {
+    setShowNav(location.pathname === '/');
+  }, [location]);
+
+  return showNav ? <Nav /> : <SideNav />;
+};
+
+function App(props) {
+    const [ sidebarOpen, setSidebarOpen ] = useState(true)
+
     return (
       <Router>
-          {window.location.pathname == '/' ? (<Nav/>) : <SideNav setSidebar={setSidebar} />}
+          <NavigationHandler />
           <Routes>
             <Route exact path="/" element={<Main/>} />
             <Route exact path="/home" element={<Home sidebarOpen={sidebarOpen} />} />

@@ -30,6 +30,7 @@ main {
   padding: 0;
 }
 .navbar .navbar-brand {
+  font-size: 1.75rem;
   color: var(--m-opp);
 }
 .navbar .nav-item {
@@ -54,7 +55,7 @@ main {
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
-  padding: 1rem;
+  padding-bottom: 3.5rem;
   min-height: 40rem;
 }
 .center-screen .cs-main button {
@@ -189,9 +190,13 @@ main {
   color: rgba(255, 0, 0, 0.8745098039);
 }
 .center-screen .pricing .price-col div button {
-  background-color: var(--sec-color);
+  background-color: rgba(33, 37, 41, 0.937254902);
+  border: 2px solid rgba(33, 37, 41, 0.937254902);
   color: var(--main-color);
-  border: none;
+}
+.center-screen .pricing .price-col div button:hover {
+  background-color: white;
+  color: rgba(33, 37, 41, 0.937254902);
 }
 
 .sidebar {
