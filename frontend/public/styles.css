@@ -220,7 +220,6 @@ main {
   width: 18rem;
   height: 100vh;
   transition: all 0.3s ease-in-out;
-  box-shadow: var(--shadow);
   z-index: 3;
 }
 .sidebar hr {
@@ -424,6 +423,10 @@ main {
 .homepage .home-col .btn {
   margin-top: 1rem;
 }
+.homepage .home-col .btn i {
+  margin: auto 0 auto 0.5rem;
+  font-size: 1rem;
+}
 .homepage .empty-col {
   flex-grow: 1;
 }
@@ -572,26 +575,68 @@ main {
   display: flex;
   flex-direction: row;
   padding-left: 18rem;
-  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
   transition: all 0.3s ease-in-out;
 }
 .questions .questions-list-parent {
-  background-image: linear-gradient(to bottom, var(--sec-color), var(--third-color));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(221, 87, 110, 0.8117647059);
   width: 20rem;
-  padding: 1rem 0;
   z-index: 2;
   box-shadow: var(--shadow);
   height: 100vh;
 }
+.questions .questions-list-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 0.5rem;
+  width: 100%;
+  min-height: 6rem;
+  background-color: var(--sec-color);
+}
+.questions .questions-list-header .btn {
+  margin: 0;
+}
+.questions .questions-list-header .header-sort-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.questions .questions-list-header .header-sort-buttons .btn {
+  display: flex;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 0.25rem;
+  background-color: #b04355;
+  font-size: 1.05rem;
+}
+.questions .questions-list-header .header-sort-buttons .selected {
+  background-color: rgba(176, 67, 85, 0.8745098039);
+  border: 1.5px solid rgba(255, 255, 255, 0.6862745098);
+  opacity: 0.85;
+}
+.questions .questions-list-section {
+  padding: 1rem 0.5rem;
+  width: 100%;
+  background-color: #b8485a;
+}
+.questions .questions-list-section h5 {
+  margin: 0;
+}
 .questions .questions-list {
-  background-color: transparent;
+  position: relative;
   padding: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
+  width: 100%;
   overflow-y: auto;
-  box-shadow: 0 0.5rem 0.5rem -0.5rem rgba(0, 0, 0, 0.6823529412);
 }
 .questions .questions-list button {
   background-color: var(--main-color);
@@ -599,23 +644,22 @@ main {
   width: 100%;
   margin: 0;
   border-radius: 0;
-  border-top: 2px solid rgba(0, 0, 0, 0.1254901961);
+  border-top: 1px solid rgba(0, 0, 0, 0.1254901961);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1254901961);
 }
 .questions .questions-list button:hover {
   background-color: rgba(255, 255, 255, 0.8745098039);
 }
+.questions .questions-list button.selected {
+  background-color: rgba(255, 255, 255, 0.8745098039);
+}
 .questions .questions-list .btn:first-child {
   border-radius: 0.5rem 0.5rem 0 0;
-  border: 0;
+  border-top: 0;
 }
 .questions .questions-list .btn:last-child {
+  border-bottom: 0;
   border-radius: 0 0 0.5rem 0.5rem;
-}
-.questions .questions-list.at-bottom {
-  box-shadow: 0 -1rem 1rem -1rem rgba(0, 0, 0, 0.5);
-}
-.questions .questions-list.not-top {
-  box-shadow: 0 -1rem 1rem -1rem rgba(0, 0, 0, 0.5), 0 1rem 1rem -1rem rgba(0, 0, 0, 0.5);
 }
 .questions .question-area {
   display: flex;
@@ -642,7 +686,7 @@ main {
 }
 .questions .question-area form label.cancel {
   text-decoration: line-through;
-  color: rgb(126, 126, 126);
+  color: #7e7e7e;
 }
 .questions .question-area form .questions-buttons {
   margin-top: 10rem;
@@ -663,7 +707,7 @@ main {
   background-color: var(--sec-color);
 }
 .questions .question-area form .questions-buttons .mark-btn, .questions .question-area form .questions-buttons .check-btn {
-  background-color: #8D5790;
+  background-color: var(--sec-color);
 }
 
 .full-length {
@@ -680,10 +724,6 @@ main {
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   font-size: 1.15rem;
-}
-.btn i {
-  margin: auto 0 auto 0.5rem;
-  font-size: 1rem;
 }
 
 .btn:hover {

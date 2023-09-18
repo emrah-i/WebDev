@@ -264,7 +264,17 @@ function Subject(props) {
             </main>)
 }
 
-function Questions() {
+function Questions(props) {
+
+    useEffect(() => {
+      const sidebar = document.querySelector('.small-sidebar');
+      const main = document.querySelector('main');
+
+      if (sidebar && main) {
+        sidebar.classList.toggle('small-sidebar', props.sidebarOpen);
+        main.classList.toggle('full-length', props.sidebarOpen);
+      }
+    }, [props.sidebarOpen]);
 
     function removeAnswer(event) {
       event.target.classList.toggle('cancel')
@@ -272,7 +282,7 @@ function Questions() {
 
     function scrollPosition(event) {
         const questions = event.target
-        const isAtBottom = questions.scrollHeight - questions.scrollTop === questions.clientHeight;
+        const isAtBottom = questions.scrollHeight - questions.scrollTop <= questions.clientHeight + 1;
         const isAtTop = questions.scrollTop === 0
       
         if (isAtBottom) {
@@ -292,16 +302,20 @@ function Questions() {
 
     return(<main className='questions'>
             <div className='questions-list-parent'>
+                <div className='questions-list-section'>
+                  <h5>Biology</h5>
+                </div>
+                <div className='questions-list-header'>
+                  <h5>Sort:</h5>
+                  <div className='header-sort-buttons'>
+                    <button className='btn selected'>All</button>
+                    <button className='btn '><i class="fa-solid fa-tag"></i></button>
+                    <button className='btn'><i class="fa-solid fa-xmark"></i></button>
+                    <button className='btn'><i class="fa-solid fa-check"></i></button>
+                  </div>
+                </div>
                 <div className='questions-list' onScroll={(event)=>scrollPosition(event)}>
-                    <button className='btn'>Question 1</button>
-                    <button className='btn'>Question 2</button>
-                    <button className='btn'>Question 3</button>
-                    <button className='btn'>Question 4</button>
-                    <button className='btn'>Question 5</button>
-                    <button className='btn'>Question 6</button>
-                    <button className='btn'>Question 7</button>
-                    <button className='btn'>Question 8</button>
-                    <button className='btn'>Question 1</button>
+                    <button className='btn selected'>Question 1</button>
                     <button className='btn'>Question 2</button>
                     <button className='btn'>Question 3</button>
                     <button className='btn'>Question 4</button>
@@ -331,8 +345,8 @@ function Questions() {
                 <h3>Question:</h3>
                 <p>What is the mass of the Earth?</p>
                 <form>
-                  <span><input type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg</label></span>
-                  <span><input type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg+</label></span>
+                  <span>A: &nbsp;<input class="form-check-input" type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg</label></span>
+                  <span>B: &nbsp;<input class="form-check-input" type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg+</label></span>
                   <div className='questions-buttons'>
                     <div className='left-side-btns'>
                       <button className='btn back-btn'>Back</button>
@@ -369,7 +383,7 @@ function App(props) {
             <Route exact path="/" element={<Main/>} />
             <Route exact path="/home" element={<Home sidebarOpen={setSidebarOpen} />} />
             <Route exact path="/subject/:subject" element={<Subject sidebarOpen={sidebarOpen} />} />
-            <Route exact path="questions" element={<Questions />} />
+            <Route exact path="questions" element={<Questions sidebarOpen={sidebarOpen} />} />
           </Routes>
       </Router>
     )
