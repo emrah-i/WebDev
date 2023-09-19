@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useParams, useLocation } from "react-router-dom";
 import Nav from './components/nav';
-import SideNav from './components/sidenav'
+import SideNav from './components/sidenav';
+import Chart from 'chart.js/auto';
 
 function Main(props) {
 
@@ -288,7 +289,6 @@ function Questions(props) {
       
         if (isAtBottom) {
           parent.classList.add('at-bottom')
-          parent.classList.remove('not-top')
         }
         else if (isAtTop) {
           parent.classList.remove('at-bottom')
@@ -305,15 +305,23 @@ function Questions(props) {
             <div className='questions-list-parent'>
                 <div className='questions-list-section'>
                   <h5>Biology</h5>
+                  <button className='btn back-btn'><i class="fa-solid fa-chevron-left"></i>&nbsp; Back</button>
                 </div>
                 <div className='questions-list-header'>
-                  <h5>Sort:</h5>
-                  <div className='header-sort-buttons'>
-                    <button className='btn selected'>All</button>
-                    <button className='btn '><i class="fa-solid fa-tag"></i></button>
-                    <button className='btn'><i class="fa-solid fa-xmark"></i></button>
-                    <button className='btn'><i class="fa-solid fa-check"></i></button>
+                  <h5>Questions complete:</h5>
+                  <div className="progress">
+                    <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                  <hr/>
+                  <h5>Sort:</h5>
+                  <form className='questions-sort'>
+                    <select name='sort'>
+                      <option selected>All Questions</option>
+                      <option>Tagged Questions</option>
+                      <option>Incomplete Questions</option>
+                      <option>Complete Questions</option>
+                    </select>
+                  </form>
                 </div>
                 <div className='questions-list' onScroll={(event)=>scrollPosition(event)}>
                     <button className='btn selected'>Question 1</button>
@@ -350,12 +358,12 @@ function Questions(props) {
                   <span>B: &nbsp;<input class="form-check-input" type="radio" name='option' />&nbsp; <label onClick={(event)=>removeAnswer(event)}>1kg+</label></span>
                   <div className='questions-buttons'>
                     <div className='left-side-btns'>
-                      <button className='btn back-btn'>Back</button>
+                      <button type='button' className='btn back-btn'>Back</button>
                     </div>
                     <div className='right-side-btns'>
-                      <button className='btn next-btn'>Next</button>
-                      <button className='btn check-btn'>Check Answer</button>
-                      <button className='btn mark-btn'>Mark</button>
+                      <button type='button' className='btn next-btn'>Next</button>
+                      <button type='button' className='btn check-btn'>Check Answer</button>
+                      <button type='button' className='btn mark-btn'>Mark</button>
                     </div>
                   </div>
                 </form>

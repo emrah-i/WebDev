@@ -3,6 +3,8 @@
     --m-opp: #212529;
     --sec-color: #dd576e;
     --third-color: #d7b288;
+    --alt-sec-color: #3b78ae;
+    --alt-third-color: #845EC2;
     --shadow: 0 0 .5rem .5rem #00000020;
 }
 
@@ -251,7 +253,7 @@ main {
     left: 0;
     width: 18rem;
     height: 100vh;
-    transition: all .3s ease-in-out;
+    transition: all .3s ease;
     z-index: 3;
 
     hr {
@@ -704,8 +706,7 @@ main {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 1rem;
-        box-shadow: 0 -1rem 3rem .5rem #00000070;
+        box-shadow: 0 -1rem 3rem .25rem black;
     }
 
     .questions-list-parent.at-bottom::before {
@@ -716,10 +717,10 @@ main {
         z-index: 1;
         content: "";
         position: absolute;
-        top: 9rem;
+        top: 15rem;
         left: 0;
         width: 100%;
-        box-shadow: 0 1rem 3rem .5rem  black;
+        box-shadow: 0 1rem 3rem .15rem  black;
     }
 
     .questions-list-header {
@@ -727,10 +728,10 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: start;
-        padding: .5rem 1rem;
+        padding: .5rem 1rem 1rem;
         width: 100%;
-        min-height: 6rem;
-        background-color: var(--sec-color);
+        min-height: fit-content;
+        background-color: var(--sec-color); 
         z-index: 2;
 
         .btn {
@@ -757,15 +758,47 @@ main {
                 opacity: .85;
             }
         }
+
+        .questions-sort {
+            font-size: 1.15rem;
+            
+            select {
+                border: 2px solid #00000020;
+                border-radius: .5rem;
+                padding: .25rem;
+            }
+        }
+
+        .progress {
+            width: 100%;
+            background-color: #FFFFFF;
+        }
+
+        hr {
+            height: 0;
+            width: 100%;
+            border-radius: 1rem;
+            border: 2px solid white;
+            margin: 1rem 0;
+        }
     }
 
     .questions-list-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 1rem;
         width: 100%;
         background-color: #b8485a;
 
-        h5 {
+        h5, button {
             margin: 0;
+        }
+
+        button {
+            font-size: 1.05rem;
+            display: flex;
+            background-color: var(--sec-color);
         }
     }
 
@@ -806,14 +839,6 @@ main {
             border-bottom: 0;
             border-radius: 0 0 .5rem .5rem;
         }
-    }
-
-    .questions-list.not-top {
-
-    }
-
-    .questions-list.at-bottom {
-        
     }
 
     .question-area {

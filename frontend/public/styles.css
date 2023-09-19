@@ -4,6 +4,8 @@
   --m-opp: #212529;
   --sec-color: #dd576e;
   --third-color: #d7b288;
+  --alt-sec-color: #3b78ae;
+  --alt-third-color: #845EC2;
   --shadow: 0 0 .5rem .5rem #00000020;
 }
 
@@ -219,7 +221,7 @@ main {
   left: 0;
   width: 18rem;
   height: 100vh;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
   z-index: 3;
 }
 .sidebar hr {
@@ -596,8 +598,7 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1rem;
-  box-shadow: 0 -1rem 3rem 0.5rem rgba(0, 0, 0, 0.4392156863);
+  box-shadow: 0 -1rem 3rem 0.25rem black;
 }
 .questions .questions-list-parent.at-bottom::before {
   box-shadow: none;
@@ -606,19 +607,20 @@ main {
   z-index: 1;
   content: "";
   position: absolute;
-  top: 9rem;
+  top: 15rem;
   left: 0;
   width: 100%;
-  box-shadow: 0 1rem 3rem 0.5rem black;
+  box-shadow: 0 1rem 3rem 0.15rem black;
 }
 .questions .questions-list-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 1rem;
   width: 100%;
-  min-height: 6rem;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   background-color: var(--sec-color);
   z-index: 2;
 }
@@ -644,13 +646,40 @@ main {
   border: 1.5px solid rgba(255, 255, 255, 0.6862745098);
   opacity: 0.85;
 }
+.questions .questions-list-header .questions-sort {
+  font-size: 1.15rem;
+}
+.questions .questions-list-header .questions-sort select {
+  border: 2px solid rgba(0, 0, 0, 0.1254901961);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+.questions .questions-list-header .progress {
+  width: 100%;
+  background-color: #FFFFFF;
+}
+.questions .questions-list-header hr {
+  height: 0;
+  width: 100%;
+  border-radius: 1rem;
+  border: 2px solid white;
+  margin: 1rem 0;
+}
 .questions .questions-list-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   width: 100%;
   background-color: #b8485a;
 }
-.questions .questions-list-section h5 {
+.questions .questions-list-section h5, .questions .questions-list-section button {
   margin: 0;
+}
+.questions .questions-list-section button {
+  font-size: 1.05rem;
+  display: flex;
+  background-color: var(--sec-color);
 }
 .questions .questions-list {
   position: relative;
