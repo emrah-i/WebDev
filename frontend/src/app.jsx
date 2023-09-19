@@ -10,7 +10,7 @@ function Main(props) {
             <div className="cs-main">
               <div className="container py-5">
                 <h1 className="display-5 fw-bold">Welcome to PeakPrep</h1>
-                <p className="col-md-8 fs-4">The Best Location For FREE DAT/OAT Prep Content.</p>
+                <p className="col-md-8 fs-4">The Best Location For FREE OAT Prep Content.</p>
                 <button className="btn" type="button">Register</button>
               </div>
             </div>
@@ -18,12 +18,17 @@ function Main(props) {
 
             {/* <p>I simply belive that every road you walk on was paved by someone before you. Therefore, if you don't pay that favor back, you're hurting society.</p> */}
 
+            <div className="container vsl">
+              <h3>Find out why we're the best test prep course out there!</h3>
+              <h3><i class="fa-solid fa-chevron-down"></i></h3>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/jNQXAC9IVRw?si=NYcpUc_Cwp0wk09g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
             <div className="container align-items-md-stretch">
               <div className='row'>
                 <div className="col-md-6">
                   <div className="cs-sec">
                     <h2>Proven to Work!</h2>
-                    <p>These are the tools that I used to prepare for the DAT/OAT. I took the OAT and got a 390AA and 400TS on my <u>first try.</u></p>
+                    <p>These are the tools that I used to prepare for the OAT. I took the OAT and got a 390AA and 400TS on my <u>first try.</u></p>
                     <img src="/grades.svg" />
                   </div>
                 </div>
@@ -252,11 +257,11 @@ function Subject(props) {
                   </div>
                   <div className="accordion-content" id="content1">
                     <div className='accordion-btns'>
-                      <button className='button-title'>Content for section 1</button>
+                      <button className='button-title'>Section 1 Reading</button>
                       <button className='button-check' onClick={(event)=>checkSection(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
                     </div>
                     <div className='accordion-btns'>
-                      <button className='button-title'>Content for section 2</button>
+                      <button className='button-title'>Section 1 Practice Questions</button>
                       <button className='button-check' onClick={(event)=>checkSection(event)}><i className="fa-regular fa-circle accordion-check"></i></button>
                     </div>
                   </div>

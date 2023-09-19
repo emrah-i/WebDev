@@ -92,6 +92,24 @@ main {
         }
     }
 
+    .vsl {
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        min-height: 40rem;
+
+        iframe {
+            aspect-ratio: 16 / 9;
+            width: 70%;
+            height: auto;
+            border-radius: .5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+    }
+
     .seperator {
         width: 0;
         height: 0;

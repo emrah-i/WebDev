@@ -81,6 +81,22 @@ main {
   background-color: transparent;
   color: white;
 }
+.center-screen .vsl {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-height: 40rem;
+}
+.center-screen .vsl iframe {
+  aspect-ratio: 16/9;
+  width: 70%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  box-shadow: var(--shadow);
+}
 .center-screen .seperator {
   width: 0;
   height: 0;
