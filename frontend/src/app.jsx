@@ -11,7 +11,14 @@ function Main(props) {
               <div className="container py-5">
                 <h1 className="display-5 fw-bold">Welcome to PeakPrep</h1>
                 <p className="col-md-8 fs-4">The Best Location For FREE OAT Prep Content.</p>
+                <ul>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Updated for 2023</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; XXXX+ questions</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Full guides</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Linked videos for each section</li>
+                </ul>
                 <button className="btn" type="button">Register</button>
+                <img src="/ipad.png" alt='ipad' />
               </div>
             </div>
             <div className='seperator'></div>
@@ -44,7 +51,6 @@ function Main(props) {
             </div>
             <div className='details'>
               <div className='seperator2-top'></div>
-              df
               <div className='seperator2-bottom'></div>
             </div>
             <div className='container pricing'>

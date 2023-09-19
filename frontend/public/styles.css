@@ -64,6 +64,7 @@ main {
   position: relative;
 }
 .center-screen .cs-main {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,6 +81,16 @@ main {
 .center-screen .cs-main button:hover {
   background-color: transparent;
   color: white;
+}
+.center-screen .cs-main ul {
+  padding: 0;
+  list-style: none;
+}
+.center-screen .cs-main img {
+  position: absolute;
+  width: 60%;
+  right: 0;
+  top: -2%;
 }
 .center-screen .vsl {
   color: black;
@@ -138,6 +149,12 @@ main {
   height: 0;
   border-left: 100vw solid transparent;
   border-bottom: 4rem solid white;
+}
+.center-screen .details img {
+  position: absolute;
+  width: 60%;
+  left: -10%;
+  top: -10%;
 }
 .center-screen .pricing {
   margin-top: 5rem;
