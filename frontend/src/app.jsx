@@ -281,21 +281,22 @@ function Questions(props) {
     }
 
     function scrollPosition(event) {
+        const parent = document.querySelector('.questions-list-parent')
         const questions = event.target
         const isAtBottom = questions.scrollHeight - questions.scrollTop <= questions.clientHeight + 1;
         const isAtTop = questions.scrollTop === 0
       
         if (isAtBottom) {
-          questions.classList.add('at-bottom')
-          questions.classList.remove('not-top')
+          parent.classList.add('at-bottom')
+          parent.classList.remove('not-top')
         }
         else if (isAtTop) {
-          questions.classList.remove('at-bottom')
-          questions.classList.remove('not-top')
+          parent.classList.remove('at-bottom')
+          parent.classList.remove('not-top')
         }
         else {
-          questions.classList.remove('at-bottom')
-          questions.classList.add('not-top')
+          parent.classList.remove('at-bottom')
+          parent.classList.add('not-top')
         }
       
     };
