@@ -13,15 +13,16 @@ function Main(props) {
                 <p className="col-md-8 fs-4">The Best Location For FREE OAT Prep Content.</p>
                 <ul>
                   <li><i class="fa-solid fa-circle-check"></i>&nbsp; Updated for 2023</li>
-                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; XXXX+ questions</li>
-                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Full guides</li>
-                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Linked videos for each section</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; XXXX+ Questions</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Full Guides</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Full Notes</li>
+                  <li><i class="fa-solid fa-circle-check"></i>&nbsp; Linked Videos</li>
                 </ul>
                 <button className="btn" type="button">Register</button>
                 <img src="/ipad.png" alt='ipad' />
               </div>
             </div>
-            <div className='seperator'></div>
+            <div className='seperator'> sdfsdf</div>
 
             {/* <p>I simply belive that every road you walk on was paved by someone before you. Therefore, if you don't pay that favor back, you're hurting society.</p> */}
 
@@ -30,28 +31,33 @@ function Main(props) {
               <h3><i class="fa-solid fa-chevron-down"></i></h3>
               <iframe width="560" height="315" src="https://www.youtube.com/embed/jNQXAC9IVRw?si=NYcpUc_Cwp0wk09g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-            <div className="container align-items-md-stretch">
-              <div className='row'>
-                <div className="col-md-6">
-                  <div className="cs-sec">
-                    <h2>Proven to Work!</h2>
-                    <p>These are the tools that I used to prepare for the OAT. I took the OAT and got a 390AA and 400TS on my <u>first try.</u></p>
-                    <img src="/grades.svg" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="cs-sec">
-                    <h2>Free Content!</h2>
-                    <p><u>All content that I recieved for FREE is FREE for the public.</u> The only content behind a paywall are the ones that I personally created.
-                    This project began in order to create a system that <strong>WON'T</strong> break the bank.</p>
-                    <img src="/piggy.svg" />
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className='details'>
               <div className='seperator2-top'></div>
+              <div className="cs-sec">
+                <span>
+                  <h2>Proven to Work!</h2>
+                  <p>These are the tools that I used to prepare for the OAT. I took the OAT and got a 390AA and 400TS on my <u>first try.</u></p>
+                </span>
+                <img src="/grades.svg" />
+              </div>
               <div className='seperator2-bottom'></div>
+            </div>
+            <div className='container offerings'>
+              <div className='row'>
+                <div className='col header-col'>
+                  <h1>What we offer</h1>
+                  <p>Victory SCREEECH</p>
+                </div>
+                <img className='offer-img' src='/random.jpeg' />
+                <div className='col offer-btns-div'>
+                  <button className='offer-btn active'>Chapter Notes</button>
+                  <button className='offer-btn'>Linked Videos</button>
+                  <button className='offer-btn'>Practice Questions</button>
+                  <button className='offer-btn'>Practice Exams</button>
+                  <button className='offer-btn'>Flashcards</button>
+                  <button className='offer-btn'>Study Guides</button>
+                </div>
+              </div>
             </div>
             <div className='container pricing'>
               <div className='row'>
@@ -64,7 +70,7 @@ function Main(props) {
                 <div className='col price-col'>
                   <h2>Free</h2>
                   <div>
-                    <p><info>$0<span>/mo</span></info></p>
+                    <p>FREE</p>
                     <ul>
                       <li>Videos for all subjects</li>
                       <li>Study guides</li>
@@ -79,7 +85,7 @@ function Main(props) {
                 <div className='col price-col'>
                   <h2>1 Month Plan</h2>
                   <div>
-                    <p><info>$35<span>/mo</span></info></p>
+                    <p><info>$70<span>/mo</span></info></p>
                     <ul>
                       <li>Videos for all subjects</li>
                       <li>Study guides</li>
@@ -94,7 +100,7 @@ function Main(props) {
                 <div className='col price-col'>
                   <h2>3 Month Plan</h2>
                   <div>
-                    <p><s><span>$120</span></s><info>$100<span>/3mo</span></info></p>
+                    <p><s><span>$210</span></s><info>$180<span>/3mo</span></info></p>
                     <ul>
                       <li>Videos for All Subjects</li>
                       <li>Study Guides</li>
@@ -110,6 +116,17 @@ function Main(props) {
             </div>
           </main>)
 }
+
+
+{/* <div className="col-md-6">
+  <div className="cs-sec">
+    <h2>Free Content!</h2>
+    <p><u>All content that I recieved for FREE is FREE for the public.</u> The only content behind a paywall are the ones that I personally created.
+    This project began in order to create a system that <strong>WON'T</strong> break the bank.</p>
+    <img src="/piggy.svg" />
+  </div>
+</div> */}
+
 
 function Home(props) {
 
